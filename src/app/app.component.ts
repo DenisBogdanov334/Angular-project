@@ -8,3 +8,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'my-app';
 }
+export class Department {
+  id: number;
+  name: string;
+}
+export class Task {
+  id: number;
+  name: string;
+}
+export class Employee {
+  id: number;
+  name: string;
+}
