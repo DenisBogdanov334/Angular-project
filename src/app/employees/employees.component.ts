@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Employee} from './employee'
+import {Employee} from './employee';
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
@@ -7,13 +7,13 @@ import {Employee} from './employee'
 })
 export class EmployeesComponent implements OnInit {
 	export const employee: Employee[] = [
-  	{id: 1, name: 'Viktor'},
-  	{id: 2, name: 'Denis'},
-  	{id: 3, name: 'ae'},
-  	{id: 5, name: '21'},
-  	{id: 8, name: 'LLStylish'},
-  	{id: 11, name: 'rtg'},
-  	{id: 55, name: 'th'},
+  	{FirstName: 'Viktor ', LastName: 'Bakov'},
+  	{FirstName: 'Denis ', LastName: 'Bogdanov'},
+  	{FirstName: 'Shin ', LastName: 'Lim'},
+  	{FirstName: 'Marc ', LastName: 'Owen'},
+  	{FirstName: 'Spas ', LastName: 'Canov'},
+  	{FirstName: 'Jake ', LastName: 'Cutler'},
+  	{FirstName: 'Pete ', LastName: 'Robinson'},
   	];
   constructor() { }
 

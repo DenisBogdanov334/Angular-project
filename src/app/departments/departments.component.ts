@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Department} from './department'
+import {Department} from './department';
 @Component({ 
-	
   selector: 'app-departments',
   templateUrl: './departments.component.html',
   styleUrls: ['./departments.component.css']
@@ -10,13 +9,13 @@ import {Department} from './department'
 
 export class DepartmentsComponent implements OnInit {
   	export const department: Department[] = [
-  	{id: 1, name: 'Viktor'},
-  	{id: 2, name: 'Denis'},
-  	{id: 3, name: 'ae'},
-  	{id: 5, name: '21'},
-  	{id: 8, name: 'er'},
-  	{id: 11, name: 'rtg'},
-  	{id: 55, name: 'th'},
+  	{Number: 1, Name: '.Aisne'},
+  	{Number: 2, Name: '.Ardennes'},
+  	{Number: 3, Name: '.Creuse'},
+  	{Number: 4, Name: '.Doubs'},
+  	{Number: 5, Name: '.Mayenne'},
+  	{Number: 6, Name: '.Nord'},
+  	{Number: 7, Name: '.Yvelines'},
   	];
   constructor() { 
   		

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Task} from './task'
+import {Task} from './task';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -7,13 +7,13 @@ import {Task} from './task'
 })
 export class TasksComponent implements OnInit {
 	export const task: Task[] = [
-  	{id: 1, name: 'Denis'},
-  	{id: 2, name: 'Denis'},
-  	{id: 3, name: 'ae'},
-  	{id: 5, name: '21'},
-  	{id: 8, name: 'er'},
-  	{id: 11, name: 'Viktor'},
-  	{id: 55, name: 'th'},
+  	{Number: 1, Name: '.Clean'},
+  	{Number: 2, Name: '.Read'},
+  	{Number: 3, Name: '.Study'},
+  	{Number: 4, Name: '.Work'},
+  	{Number: 5, Name: '.Shop'},
+  	{Number: 6, Name: '.Workout'},
+  	{Number: 7, Name: '.Swim'},
   	];
   constructor() { }
 

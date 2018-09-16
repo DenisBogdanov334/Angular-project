@@ -9,14 +9,17 @@ export class AppComponent {
   title = 'my-app';
 }
 export class Department {
-  id: number;
-  name: string;
+title = 'my-departments';
+  Number: number;
+  Name: string;
 }
 export class Task {
-  id: number;
-  name: string;
+title = 'my-tasks';
+  Number: number;
+  Name: string;
 }
 export class Employee {
-  id: number;
-  name: string;
+title = 'my-employees';
+  FirstName: string;
+  LastName: string;
 }
