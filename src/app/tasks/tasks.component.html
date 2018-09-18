@@ -1,5 +1,44 @@
-<h2>My Tasks</h2>
-<ul class="task">
-	<li *ngFor="let task of task">
-		<span class = "badge">{{task.Number}}</span>{{task.Name}}</li>
-	</ul>
+<div class="task">
+<h2>Tasks</h2>
+
+<div class="update" *ngIf="selectedTask">
+	<h3>{{selectedTask.Name}}Details</h3>
+	<div>
+
+		<label for="editTaskName" class="material">Task Name</label>
+		<input type="text" class="material" [(ngModel)]="selectedTask.Name" placeholder="Task Name"/>
+		<label for="editTaskNumber" class="material">Task Number</label>
+		<input type="text" class="material" [(ngModel)]="selectedTask.Number" placeholder="Task Number"/>
+
+		<button class="btndelete" (click)="delete()">Delete Task</button>
+	</div>
+</div>
+<table st-table="rowCollection" class="table table-stripped table-hover">
+<thead>
+	<tr>
+		<th>Number</th>
+		<th>Name</th>
+</tr>
+</thead>
+
+<tbody>
+	<tr *ngFor="let task of tasks"(click)="taskOnClick(task)"[class.selected]="task === selectedTask">
+		<td>{{task.Number}}</td>
+		<td>{{task.Name}}</td>
+	</tr>
+</tbody>
+</table>
+	<div class="create">
+		<button class="pip" [hidden]="creatingtask" (click)="creatingTask = true">
+			Create Task
+		</button>
+
+		<div *ngIf="creatingTask">
+			<h2>Add new task</h2>
+<label for="Name" class="material">Task Name</label>
+<input type="text" id="Name" [(ngModel)]="Name" placeholder="Task Name"/>
+<label for="Number" class="material">Task Number</label>
+<input type="text" id="Number" [(ngModel)]="Number" placeholder="Task Number"/>
+<button class="pop" (click)="create(Number,Name)">Create</button>
+</div>
+</div>
