@@ -1,6 +1,7 @@
 export class Task{
   Number: number;
   Name: string;
+<<<<<<< HEAD
   /*
   constructor(Number:number,Name:string){
     this.Number = Number;
@@ -8,3 +9,12 @@ export class Task{
   }
   */
 }
+=======
+
+
+constructor(Number:number,Name:string){
+  this.Number = Number;
+  this.Name = Name;
+}
+}
+>>>>>>> origin/master

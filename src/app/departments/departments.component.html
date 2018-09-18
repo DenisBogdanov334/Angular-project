@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 	<h2>Departments</h2>
@@ -50,3 +51,49 @@
 			<button class="btndelete" (click)="delete()">Delete Department</button>
 		</div>
 	</div>
+=======
+<div class="department">
+<h2>Departments</h2>
+
+<div class="update" *ngIf="selectedDepartment">
+	<h3>{{selectedDepartment.DepName}}Details</h3>
+	<div>
+
+		<label for="editDepName" class="material">Department Name</label>
+		<input type="text" class="material" [(ngModel)]="selectedDepartment.DepName" placeholder="Department Name"/>
+		<label for="editDepNumber" class="material">Department Number</label>
+		<input type="text" class="material" [(ngModel)]="selectedDepartment.DepNumber" placeholder="Department Number"/>
+
+		<button class="btndelete" (click)="delete()">Delete Department</button>
+	</div>
+</div>
+<table st-table="rowCollection" class="table table-stripped table-hover">
+<thead>
+	<tr>
+		<th>Number</th>
+		<th>Name</th>
+</tr>
+</thead>
+
+<tbody>
+	<tr *ngFor="let department of departments"(click)="departmentOnClick(department)"[class.selected]="department === selectedDepartment">
+		<td>{{department.DepNumber}}</td>
+		<td>{{department.DepName}}</td>
+	</tr>
+</tbody>
+</table>
+	<div class="create">
+		<button class="pip" [hidden]="creatingDepartment" (click)="creatingDepartment = true">
+			Create Department
+		</button>
+
+		<div *ngIf="creatingDepartment">
+			<h2>Add new department</h2>
+<label for="DepName" class="material">Department Name</label>
+<input type="text" id="DepName" [(ngModel)]="DepName" placeholder="Department Name"/>
+<label for="DepNumber" class="material">Department Number</label>
+<input type="text" id="DepNumber" [(ngModel)]="DepNumber" placeholder="Department Number"/>
+<button class="pop" (click)="create(DepNumber,DepName)">Create</button>
+</div>
+</div>
+>>>>>>> origin/master
