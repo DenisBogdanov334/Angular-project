@@ -1,0 +1,12 @@
+
+.table {
+  padding-left: 2em;
+}
+
+.pip {
+  margin-left: 1em;
+  margin-top: 0.7em;
+}
+.create, .update {
+  margin-left: 2em;
+}
