@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h2>Tasks</h2>
 
 
@@ -20,38 +19,6 @@
 	</table>
 
 <!-- Create new task -->
-=======
-<div class="task">
-<h2>Tasks</h2>
-
-<div class="update" *ngIf="selectedTask">
-	<h3>{{selectedTask.Name}}Details</h3>
-	<div>
-
-		<label for="editTaskName" class="material">Task Name</label>
-		<input type="text" class="material" [(ngModel)]="selectedTask.Name" placeholder="Task Name"/>
-		<label for="editTaskNumber" class="material">Task Number</label>
-		<input type="text" class="material" [(ngModel)]="selectedTask.Number" placeholder="Task Number"/>
-
-		<button class="btndelete" (click)="delete()">Delete Task</button>
-	</div>
-</div>
-<table st-table="rowCollection" class="table table-stripped table-hover">
-<thead>
-	<tr>
-		<th>Number</th>
-		<th>Name</th>
-</tr>
-</thead>
-
-<tbody>
-	<tr *ngFor="let task of tasks"(click)="taskOnClick(task)"[class.selected]="task === selectedTask">
-		<td>{{task.Number}}</td>
-		<td>{{task.Name}}</td>
-	</tr>
-</tbody>
-</table>
->>>>>>> origin/master
 	<div class="create">
 		<button class="pip" [hidden]="creatingtask" (click)="creatingTask = true">
 			Create Task
@@ -59,7 +26,6 @@
 
 		<div *ngIf="creatingTask">
 			<h2>Add new task</h2>
-<<<<<<< HEAD
 
 			<label for="Name" class="material">Task Name</label>
 			<input type="text" id="Name" [(ngModel)]="Name" placeholder="Task Name"/>
@@ -83,12 +49,3 @@
 			<button class="btndelete" (click)="delete()">Delete Task</button>
 		</div>
 	</div>
-=======
-<label for="Name" class="material">Task Name</label>
-<input type="text" id="Name" [(ngModel)]="Name" placeholder="Task Name"/>
-<label for="Number" class="material">Task Number</label>
-<input type="text" id="Number" [(ngModel)]="Number" placeholder="Task Number"/>
-<button class="pop" (click)="create(Number,Name)">Create</button>
-</div>
-</div>
->>>>>>> origin/master

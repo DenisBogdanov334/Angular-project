@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-<<<<<<< HEAD
 
 h1 {
   color: #369;
@@ -19,7 +18,7 @@ h3{
 }
 body {
   margin: 2em;
-  
+  background-color: #EEE;
 }
 body, input[text], button {
 
@@ -36,5 +35,3 @@ body, input[text], button {
 .content{
   margin-bottom: 3em;
 }
-=======
->>>>>>> origin/master

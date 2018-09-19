@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h2>Employees</h2>
 
 <!-- List of the employee -->
@@ -54,49 +53,3 @@
 			<button class="btndelete" (click)="delete()">Delete Employee</button>
 		</div>
 	</div>
-=======
-<<div class="employee">
-<h2>Employees</h2>
-
-<div class="update" *ngIf="selectedEmployee">
-	<h3>{{selectedEmployee.FirstName}}Details</h3>
-	<div>
-
-		<label for="FirstName" class="material">Employee First Name</label>
-		<input type="text" class="material" [(ngModel)]="selectedEmployee.FirstName" placeholder="Employee FirstName"/>
-		<label for="LastName" class="material">Employee Family Name</label>
-		<input type="text" class="material" [(ngModel)]="selectedEmployee.LastName" placeholder="Employee LastName"/>
-
-		<button class="btndelete" (click)="delete()">Delete Employee</button>
-	</div>
-</div>
-<table st-table="rowCollection" class="table table-stripped table-hover">
-<thead>
-	<tr>
-		<th>FirstName</th>
-		<th>LastName</th>
-</tr>
-</thead>
-
-<tbody>
-	<tr *ngFor="let employee of employees"(click)="employeeOnClick(employee)"[class.selected]="employee === selectedEmployee">
-		<td>{{employee.FirstName}}</td>
-		<td>{{employee.LastName}}</td>
-	</tr>
-</tbody>
-</table>
-	<div class="create">
-		<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
-			Create Employee
-		</button>
-
-		<div *ngIf="creatingEmployee">
-			<h2>Add new employee</h2>
-<label for="FirstName" class="material">Employee First Name</label>
-<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
-<label for="LastName" class="material">Employee Last Name</label>
-<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
-<button class="pop" (click)="create(FirstName,LastName)">Create</button>
-</div>
-</div>
->>>>>>> origin/master

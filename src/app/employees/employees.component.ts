@@ -27,7 +27,9 @@ export class EmployeesComponent implements OnInit {
     create(firstname:string,lastname:string): void{
     if (firstname.length == 0)
     return;
-    const newEmployee = new Employee(firstname,lastname);
+    const newEmployee = new Employee();
+    newEmployee.FirstName = firstname;
+    newEmployee.LastName = lastname;
     this.employees.push(newEmployee);
     this.creatingEmployee = false;
 

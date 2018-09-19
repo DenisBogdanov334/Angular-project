@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Task} from './tasks';
+import { Task } from './tasks';
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
+
 export class TasksComponent implements OnInit {
 	   tasks: Task[] = [
   	{Number: 1, Name: 'Clean'},
@@ -27,10 +29,11 @@ export class TasksComponent implements OnInit {
     create(number:number,name:string): void{
     if (name.length == 0)
     return;
-    const newTask = new Task(number,name);
-    this.tasks.push(newTask);
-    this.creatingTask = false;
-
+      const newTask = new Task();
+      newTask.Number = number;
+      newTask.Name = name;
+      this.tasks.push(newTask);
+      this.creatingTask = false;
     }
 
     delete(): void{
