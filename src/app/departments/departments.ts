@@ -9,5 +9,4 @@ export class Department{
     this.DepName = DepName;
     }
     */
-
 }

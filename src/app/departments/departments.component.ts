@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from './departments';
+import { DEPARTMENTS } from './mock-department'
+import { DepartmentsService } from './departments.service'
 
 @Component({
   selector: 'app-departments',
@@ -9,23 +11,16 @@ import { Department } from './departments';
 
 
 export class DepartmentsComponent implements OnInit {
-    departments: Department [] = [
-    {DepNumber: 1, DepName: 'Clean'},
-    {DepNumber: 2, DepName: 'Read'},
-    {DepNumber: 3, DepName: 'Study'},
-    {DepNumber: 4, DepName: 'Work'},
-    {DepNumber: 5, DepName: 'Shop'},
-    {DepNumber: 6, DepName: 'Workout'},
-    {DepNumber: 7, DepName: 'Swim'},
-    ];
-
+    departments: Department[];
     selectedDepartment: Department;
     creatingDepartment: boolean =  false;
 
-    constructor() {}
+    constructor(private departmentService: DepartmentsService) {}
 
 
-    ngOnInit() {}
+    ngOnInit() {
+      this.getDepartments();
+    }
 
     departmentOnClick(department: Department): void{
       this.selectedDepartment = department;
@@ -45,5 +40,9 @@ export class DepartmentsComponent implements OnInit {
       const selectedDepartmentIndex = this.departments.indexOf(this.selectedDepartment);
       this.departments.splice(selectedDepartmentIndex, 1);
       this.selectedDepartment = null;
+    }
+
+    getDepartments(): void{
+      this.departments = this.departmentService.getDepartments();
     }
   }
