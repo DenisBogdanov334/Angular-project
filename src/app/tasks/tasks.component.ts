@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './tasks';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -8,7 +9,8 @@ import { Task } from './tasks';
 })
 
 export class TasksComponent implements OnInit {
-	   tasks: Task[] = [
+
+    /* tasks: Task[] = [
   	{Number: 1, Name: 'Clean'},
   	{Number: 2, Name: 'Read'},
   	{Number: 3, Name: 'Study'},
@@ -16,13 +18,17 @@ export class TasksComponent implements OnInit {
   	{Number: 5, Name: 'Shop'},
   	{Number: 6, Name: 'Workout'},
   	{Number: 7, Name: 'Swim'},
-  	];
+  ]; */
+    tasks: Task[];
     selectedTask: Task;
     creatingTask: boolean =  false;
-  constructor() { }
+    constructor(private tasksService:TasksService) { }
 
-  ngOnInit() {}
-  taskOnClick(task: Task):void{
+    ngOnInit() {
+      this.getTasks();
+    }
+
+    taskOnClick(task: Task):void{
     this.selectedTask = task;
     }
 
@@ -40,6 +46,9 @@ export class TasksComponent implements OnInit {
       const selectedTaskIndex = this.tasks.indexOf(this.selectedTask);
       this.tasks.splice(selectedTaskIndex, 1);
       this.selectedTask = null;
+    }
 
+    getTasks(): void {
+      this.tasks = this.tasksService.getTasks();
     }
 }
