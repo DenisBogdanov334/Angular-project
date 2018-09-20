@@ -1,6 +1,14 @@
-
-.table {
+table {
   padding-left: 2em;
+}
+
+th{
+  padding-bottom: 7px;
+}
+
+th , td{
+  width:7em;
+  text-align: left;
 }
 
 .pip {

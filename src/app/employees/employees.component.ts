@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Employee} from './employees';
+import { Employee } from './employees';
+import { EmployeesService } from './employees.service'
+
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+    /*
     employees: Employee[] = [
   	{FirstName: 'Viktor ', LastName: 'Bakov'},
   	{FirstName: 'Denis ', LastName: 'Bogdanov'},
@@ -15,11 +18,17 @@ export class EmployeesComponent implements OnInit {
   	{FirstName: 'Jake ', LastName: 'Cutler'},
   	{FirstName: 'Pete ', LastName: 'Robinson'},
   	];
+    */
+    employees: Employee[];
     selectedEmployee: Employee;
     creatingEmployee: boolean =  false;
-  constructor() { }
 
-  ngOnInit() {}
+    constructor(private employeesService: EmployeesService) { }
+
+    ngOnInit() {
+      this.getEmployees();
+    }
+
     employeeOnClick(employee: Employee):void{
     this.selectedEmployee = employee;
     }
@@ -40,5 +49,9 @@ export class EmployeesComponent implements OnInit {
       this.employees.splice(selectedEmployeeIndex, 1);
       this.selectedEmployee = null;
 
+    }
+
+    getEmployees(): void {
+      this.employees = this.employeesService.getEmployees();
     }
 }
