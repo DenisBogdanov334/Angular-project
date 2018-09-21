@@ -1,11 +1,11 @@
 import { Task } from './tasks';
 
 export const Tasks: Task[] = [
-{Number: 1, Name: 'Clean'},
-{Number: 2, Name: 'Read'},
-{Number: 3, Name: 'Study'},
-{Number: 4, Name: 'Work'},
-{Number: 5, Name: 'Shop'},
-{Number: 6, Name: 'Workout'},
-{Number: 7, Name: 'Swim'},
+{Number: 1, Name: 'Project Management'},
+{Number: 2, Name: 'Coding'},
+{Number: 3, Name: 'Requirement Definition'},
+{Number: 4, Name: 'Recruitment'},
+{Number: 5, Name: 'training of new employees'},
+{Number: 6, Name: 'New Product Development'},
+{Number: 7, Name: 'Promotion'},
 ];
