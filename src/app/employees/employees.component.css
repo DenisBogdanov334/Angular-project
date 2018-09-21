@@ -9,6 +9,7 @@ th{
 th , td{
   width:7em;
   text-align: left;
+  padding-left: 20px;
 }
 
 .pip {

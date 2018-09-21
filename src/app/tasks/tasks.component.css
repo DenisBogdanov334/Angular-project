@@ -7,10 +7,16 @@ th{
 }
 
 th , td{
-  width:7em;
+  padding-left: 20px;
+}
+.number{
+  width: 0.5em;
+  text-align: center;
+}
+.name {
+  width: 12.5em;
   text-align: left;
 }
-
 .pip {
   margin-left: 1em;
   margin-top: 0.7em;

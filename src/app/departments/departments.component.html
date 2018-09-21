@@ -5,16 +5,16 @@
 	<table st-table="rowCollection" class="table table-stripped table-hover">
 		<thead>
 			<tr>
-				<th>Number</th>
-				<th>Name</th>
+				<th class="number">Number</th>
+				<th class="name">Name</th>
 		</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let department of departments"
 			(click)="departmentOnClick(department)"
 			[class.selected]="department === selectedDepartment">
-				<td>{{department.DepNumber}}</td>
-				<td>{{department.DepName}}</td>
+				<td class="number">{{department.DepNumber}}</td>
+				<td class="name">{{department.DepName}}</td>
 			</tr>
 		</tbody>
 	</table>

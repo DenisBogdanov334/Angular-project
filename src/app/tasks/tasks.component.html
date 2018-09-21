@@ -5,15 +5,15 @@
 	<table st-table="rowCollection" class="table table-stripped table-hover">
 		<thead>
 			<tr>
-				<th>Number</th>
-				<th>Name</th>
+				<th class="number">Number</th>
+				<th class="name">Name</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<tr *ngFor="let task of tasks"(click)="taskOnClick(task)"[class.selected]="task === selectedTask">
-				<td>{{task.Number}}</td>
-				<td>{{task.Name}}</td>
+				<td class="number">{{task.Number}}</td>
+				<td class="name">{{task.Name}}</td>
 			</tr>
 		</tbody>
 	</table>
