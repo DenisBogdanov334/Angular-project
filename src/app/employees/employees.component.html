@@ -1,55 +1,60 @@
-<h2>Employees</h2>
-
-<!-- List of the employee -->
-<table st-table="rowCollection" class="table table-stripped table-hover">
-	<thead>
-		<tr>
-			<th>FirstName</th>
-			<th>LastName</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr *ngFor="let employee of employees"
-		(click)="employeeOnClick(employee)"
-		[class.selected]="employee === selectedEmployee">
-			<td>{{employee.FirstName}}</td>
-			<td>{{employee.LastName}}</td>
-		</tr>
-	</tbody>
-</table>
+<div class="employees">
 
 
-<!-- Create new employer -->
-<div class="create">
-	<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
-			Create Employee
-	</button>
+	<h2>Employees</h2>
 
-	<div *ngIf="creatingEmployee">
-		<h3>Add new employee</h3>
-			<label for="FirstName" class="material">Employee First Name</label>
-			<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
+	<!-- List of the employee -->
+	<table st-table="rowCollection" class="table table-stripped table-hover">
+		<thead>
+			<tr>
+				<th>FirstName</th>
+				<th>LastName</th>
+			</tr>
+		</thead>
 
-			<label for="LastName" class="material">Employee Last Name</label>
-			<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
+		<tbody>
+			<tr *ngFor="let employee of employees"
+			(click)="employeeOnClick(employee)"
+			[class.selected]="employee === selectedEmployee">
+				<td>{{employee.FirstName}}</td>
+				<td>{{employee.LastName}}</td>
+			</tr>
+		</tbody>
+	</table>
 
-			<button class="pop" (click)="create(FirstName,LastName)">Create</button>
-	</div>
-</div>
 
+	<!-- Create new employer -->
+	<div class="create">
+		<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
+				Create Employee
+		</button>
 
+		<div *ngIf="creatingEmployee">
+			<h3>Add new employee</h3>
+				<label for="FirstName" class="material">Employee First Name</label>
+				<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
 
-<!-- Edit data of selected employer -->
-	<div class="update" *ngIf="selectedEmployee">
-		<h3>{{selectedEmployee.FirstName}}Details</h3>
-		<div>
-			<label for="FirstName" class="material">Employee First Name</label>
-			<input type="text" class="material" [(ngModel)]="selectedEmployee.FirstName" placeholder="Employee FirstName"/>
+				<label for="LastName" class="material">Employee Last Name</label>
+				<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
 
-			<label for="LastName" class="material">Employee Family Name</label>
-			<input type="text" class="material" [(ngModel)]="selectedEmployee.LastName" placeholder="Employee LastName"/>
-
-			<button class="btndelete" (click)="delete()">Delete Employee</button>
+				<button class="pop" (click)="create(FirstName,LastName)">Create</button>
 		</div>
 	</div>
+
+
+
+	<!-- Edit data of selected employer -->
+	<div class="update" *ngIf="selectedEmployee">
+		<h3>{{selectedEmployee.FirstName}}Details</h3>
+			<div>
+				<label for="FirstName" class="material">Employee First Name</label>
+				<input type="text" class="material" [(ngModel)]="selectedEmployee.FirstName" placeholder="Employee FirstName"/>
+
+				<label for="LastName" class="material">Employee Family Name</label>
+				<input type="text" class="material" [(ngModel)]="selectedEmployee.LastName" placeholder="Employee LastName"/>
+
+				<button class="btndelete" (click)="delete()">Delete Employee</button>
+			</div>
+	</div>
+
+</div>

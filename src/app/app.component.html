@@ -2,11 +2,14 @@
 
 
 <div style="text-align:center">
-  <h1 >Welcome to {{ title }}!</h1>
+  <h1 routerLink="/dashboard">{{ title }}</h1>
 </div>
 
+<router-outlet></router-outlet>
+<!--
 <div class = "app-list">
     <div class = content ><app-departments></app-departments></div>
     <div class = content ><app-tasks></app-tasks></div>
     <div class = content ><app-employees></app-employees></div>
 </div>
+-->

@@ -1,0 +1,21 @@
+h2{
+  margin-left: 8em;
+}
+
+.module {
+  font-size: 30px;
+  padding: 20px;
+  text-align: center;
+  color: #eee;
+  width:160px;
+  height:80px;
+  background-color: #607d8b;
+  border-radius: 2px;
+  margin: 1em;
+  float: left;
+}
+.module:hover {
+  background-color: #eee;
+  cursor: pointer;
+  color: #607d8b;
+}
