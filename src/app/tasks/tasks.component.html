@@ -18,6 +18,37 @@
 		</tbody>
 	</table>
 
+
+<!-- Edit the data of selected task -->
+	<div class="update" *ngIf="selectedTask">
+		<h3>{{selectedTask.Name}}Details</h3>
+		<div>
+			<!-- slelcted task number-->
+			<label for="editTaskNumber" class="material">Task Number : </label>
+			<input type="text" class="material" [(ngModel)]="selectedTask.Number" placeholder="Task Number"/><br>
+			<!-- selected task name -->
+			<label for="editTaskName" class="material">Task Name : </label>
+			<input type="text" class="material" [(ngModel)]="selectedTask.Name" placeholder="Task Name"/><br>
+
+			<!--Display Department selected task delong-->
+			<label for="Deapartment" class="material">Department : </label>
+			<select name="Department" [(ngModel)]="selectedTask.DepNumber" >
+					<option value=1 >IT</option>
+					<option value=2 >Personnel</option>
+					<option value=3 >Marketing</option>
+			</select><br>
+
+			<!--
+			<ul class="showEmployees">
+				<li *ngFor = "let EmpNumber of EmpNumbers">{{selectedTask.EmpNumber}}</li>
+			</ul>
+			-->
+
+			<button class="btndelete" (click)="delete()">Delete Task</button>
+		</div>
+	</div>
+
+
 <!-- Create new task -->
 	<div class="create">
 		<button class="pip" [hidden]="creatingtask" (click)="creatingTask = true">
@@ -26,26 +57,21 @@
 
 		<div *ngIf="creatingTask">
 			<h2>Add new task</h2>
+			<!-- Create new task number -->
+			<label for="Number" class="material">Task Number : </label>
+			<input type="text" id="Number" [(ngModel)]="Number" placeholder="Task Number"/><br>
 
-			<label for="Name" class="material">Task Name</label>
-			<input type="text" id="Name" [(ngModel)]="Name" placeholder="Task Name"/>
+			<!-- Create new task name -->
+			<label for="Name" class="material">Task Name : </label>
+			<input type="text" id="Name" [(ngModel)]="Name" placeholder="Task Name"/><br>
 
-			<label for="Number" class="material">Task Number</label>
-			<input type="text" id="Number" [(ngModel)]="Number" placeholder="Task Number"/>
-			<button class="pop" (click)="create(Number,Name)">Create</button>
-		</div>
-	</div>
+			<label for="task" class="material">Department : </label>
+			<select name="task" [(ngModel)]="DepNumber" >
+					<option value=1 >IT</option>
+					<option value=2 >Personnel</option>
+					<option value=3 >Marketing</option>
+			</select>
 
-	<!-- Edit the data of selected task -->
-	<div class="update" *ngIf="selectedTask">
-		<h3>{{selectedTask.Name}}Details</h3>
-		<div>
-
-			<label for="editTaskName" class="material">Task Name</label>
-			<input type="text" class="material" [(ngModel)]="selectedTask.Name" placeholder="Task Name"/>
-			<label for="editTaskNumber" class="material">Task Number</label>
-			<input type="text" class="material" [(ngModel)]="selectedTask.Number" placeholder="Task Number"/>
-
-			<button class="btndelete" (click)="delete()">Delete Task</button>
+			<button class="pop" (click)="create(Number,Name,DepNumber)">Create</button>
 		</div>
 	</div>

@@ -2,6 +2,7 @@
 export class Department{
   DepNumber: number;
   DepName: string;
+  //Number: number;
 
   /*
   constructor(DepNumber:number,DepName:string){

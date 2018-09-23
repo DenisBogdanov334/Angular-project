@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     DepartmentsComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-     FormsModule
+     FormsModule,
+     AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

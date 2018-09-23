@@ -8,20 +8,11 @@ import { EmployeesService } from './employees.service'
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-    /*
-    employees: Employee[] = [
-  	{FirstName: 'Viktor ', LastName: 'Bakov'},
-  	{FirstName: 'Denis ', LastName: 'Bogdanov'},
-  	{FirstName: 'Shin ', LastName: 'Lim'},
-  	{FirstName: 'Marc ', LastName: 'Owen'},
-  	{FirstName: 'Spas ', LastName: 'Canov'},
-  	{FirstName: 'Jake ', LastName: 'Cutler'},
-  	{FirstName: 'Pete ', LastName: 'Robinson'},
-  	];
-    */
+
     employees: Employee[];
     selectedEmployee: Employee;
     creatingEmployee: boolean =  false;
+
 
     constructor(private employeesService: EmployeesService) { }
 
@@ -48,7 +39,6 @@ export class EmployeesComponent implements OnInit {
       const selectedEmployeeIndex = this.employees.indexOf(this.selectedEmployee);
       this.employees.splice(selectedEmployeeIndex, 1);
       this.selectedEmployee = null;
-
     }
 
     getEmployees(): void {
