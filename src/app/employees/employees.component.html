@@ -21,27 +21,9 @@
 			</tr>
 		</tbody>
 	</table>
-
-
-	<!-- Create new employer -->
-	<div class="create">
-		<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
-				Create Employee
-		</button>
-
-		<div *ngIf="creatingEmployee">
-			<h3>Add new employee</h3>
-				<label for="FirstName" class="material">Employee First Name</label>
-				<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
-
-				<label for="LastName" class="material">Employee Last Name</label>
-				<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
-
-				<button class="pop" (click)="create(FirstName,LastName)">Create</button>
-		</div>
-	</div>
-
-
+	<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
+			Create Employee
+	</button>
 
 	<!-- Edit data of selected employer -->
 	<div class="update" *ngIf="selectedEmployee">
@@ -57,4 +39,18 @@
 			</div>
 	</div>
 
+	<!-- Create new employer -->
+	<div class="create">
+		<div *ngIf="creatingEmployee">
+			<h3>Add new employee</h3>
+				<label for="FirstName" class="material">Employee First Name</label>
+				<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
+
+				<label for="LastName" class="material">Employee Last Name</label>
+				<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
+
+				<button class="pop" (click)="create(FirstName,LastName)">Create</button>
+		</div>
+	</div>
+	
 </div>

@@ -2,28 +2,42 @@
 	<h2>Departments</h2>
 
 	<!-- List of the Departments  -->
-	<table st-table="rowCollection" class="table table-stripped table-hover">
-		<thead>
-			<tr>
-				<th class="number">Number</th>
-				<th class="name">Name</th>
-		</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let department of departments"
-			(click)="departmentOnClick(department)"
-			[class.selected]="department === selectedDepartment">
-				<td class="number">{{department.DepNumber}}</td>
-				<td class="name">{{department.DepName}}</td>
+		<table st-table="rowCollection" class="table table-stripped table-hover">
+			<thead>
+				<tr>
+					<th class="number">Number</th>
+					<th class="name">Name</th>
 			</tr>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<tr *ngFor="let department of departments"
+				(click)="departmentOnClick(department)"
+				[class.selected]="department === selectedDepartment">
+					<td class="number">{{department.DepNumber}}</td>
+					<td class="name">{{department.DepName}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="pip" [hidden]="creatingDepartment" (click)="creatingDepartment = true">
+			Create Department
+		</button>
+
+	<!--Edit the department -->
+		<div class="update" *ngIf="selectedDepartment">
+			<h3>{{selectedDepartment.DepName}}Details</h3>
+			<div>
+
+				<label for="editDepName" class="material">Department Name</label>
+				<input type="text" class="material" [(ngModel)]="selectedDepartment.DepName" placeholder="Department Name"/>
+				<label for="editDepNumber" class="material">Department Number</label>
+				<input type="text" class="material" [(ngModel)]="selectedDepartment.DepNumber" placeholder="Department Number"/>
+
+				<button class="btndelete" (click)="delete()">Delete Department</button>
+			</div>
+		</div>
 
 	<!-- Add new table to This List -->
 		<div class="create">
-			<button class="pip" [hidden]="creatingDepartment" (click)="creatingDepartment = true">
-				Create Department
-			</button>
 
 			<div *ngIf="creatingDepartment">
 				<h3>Add new department</h3>
@@ -35,18 +49,4 @@
 			</div>
 		</div>
 
-
-	<!--Edit the department -->
-	<div class="update" *ngIf="selectedDepartment">
-		<h3>{{selectedDepartment.DepName}}Details</h3>
-		<div>
-
-			<label for="editDepName" class="material">Department Name</label>
-			<input type="text" class="material" [(ngModel)]="selectedDepartment.DepName" placeholder="Department Name"/>
-			<label for="editDepNumber" class="material">Department Number</label>
-			<input type="text" class="material" [(ngModel)]="selectedDepartment.DepNumber" placeholder="Department Number"/>
-
-			<button class="btndelete" (click)="delete()">Delete Department</button>
-		</div>
-	</div>
 </div>

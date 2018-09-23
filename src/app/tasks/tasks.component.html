@@ -1,5 +1,5 @@
 <div class="tasks">
-	
+
 	<h2>Tasks</h2>
 	<!-- List of the tasks -->
 	<table st-table="rowCollection" class="table table-stripped table-hover">
@@ -17,6 +17,9 @@
 			</tr>
 		</tbody>
 	</table>
+	<button class="pip" [hidden]="creatingtask" (click)="creatingTask = true">
+		Create Task
+	</button>
 
 
 <!-- Edit the data of selected task -->
@@ -51,10 +54,6 @@
 
 <!-- Create new task -->
 	<div class="create">
-		<button class="pip" [hidden]="creatingtask" (click)="creatingTask = true">
-			Create Task
-		</button>
-
 		<div *ngIf="creatingTask">
 			<h2>Add new task</h2>
 			<!-- Create new task number -->
