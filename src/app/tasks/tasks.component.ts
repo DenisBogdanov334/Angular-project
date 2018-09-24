@@ -15,7 +15,6 @@ import { Department } from '../departments/departments';
 
 export class TasksComponent implements OnInit {
     allemployees : Employee[];
-
     tasks: Task[];
     selectedTask: Task;
 

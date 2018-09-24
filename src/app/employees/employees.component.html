@@ -21,13 +21,14 @@
 			</tr>
 		</tbody>
 	</table>
+
 	<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
 			Create Employee
 	</button>
 
 	<!-- Edit data of selected employer -->
 	<div class="update" *ngIf="selectedEmployee">
-		<h3>{{selectedEmployee.FirstName}}Details</h3>
+		<h3>{{selectedEmployee.FirstName}} Details</h3>
 			<div>
 				<label for="FirstName" class="material">Employee First Name</label>
 				<input type="text" class="material" [(ngModel)]="selectedEmployee.FirstName" placeholder="Employee FirstName"/>
@@ -37,6 +38,14 @@
 
 				<button class="btndelete" (click)="delete()">Delete Employee</button>
 			</div>
+			<!--Display Task-->
+			<ol>
+				<li *ngFor="let tsk of selectedEmployee.Name">Task : {{tsk.Name}}</li>
+			</ol>
+
+			<ol>
+				<li *ngFor="let dep of selectedEmployee.DepName">Department : {{dep.DepName}}</li>
+			</ol>
 	</div>
 
 	<!-- Create new employer -->
@@ -52,5 +61,5 @@
 				<button class="pop" (click)="create(FirstName,LastName)">Create</button>
 		</div>
 	</div>
-	
+
 </div>

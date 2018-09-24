@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from './employees';
-import { EmployeesService } from './employees.service'
+import { EmployeesService } from './employees.service';
+
+import { Task } from '../tasks/tasks';
+import { TasksService } from '../tasks/tasks.service';
+import { Department } from '../departments/departments';
+import { DepartmentsService} from '../departments/departments.service';
 
 @Component({
   selector: 'app-employees',
@@ -13,15 +18,30 @@ export class EmployeesComponent implements OnInit {
     selectedEmployee: Employee;
     creatingEmployee: boolean =  false;
 
+    allTasks: Task[];
+    allDepartments: Department[];
 
-    constructor(private employeesService: EmployeesService) { }
+
+    constructor(private employeesService: EmployeesService,
+                private tasksService: TasksService,
+                private departmentsService: DepartmentsService) { }
 
     ngOnInit() {
       this.getEmployees();
+      this.getTasks();
+      this.getDepartments();
     }
 
+    //Corect information about selected Employee
     employeeOnClick(employee: Employee):void{
     this.selectedEmployee = employee;
+    this.selectedEmployee.Name = this.allTasks.filter( tsk =>{
+        return employee.Number === tsk.Number;
+      })
+    this.selectedEmployee.DepName = this.allDepartments.filter( dep => {
+        return employee.DepNumber === dep.DepNumber;
+    })
+
     }
 
     create(firstname:string,lastname:string): void{
@@ -32,7 +52,6 @@ export class EmployeesComponent implements OnInit {
     newEmployee.LastName = lastname;
     this.employees.push(newEmployee);
     this.creatingEmployee = false;
-
     }
 
     delete(): void{
@@ -43,5 +62,11 @@ export class EmployeesComponent implements OnInit {
 
     getEmployees(): void {
       this.employees = this.employeesService.getEmployees();
+    }
+    getTasks(): void {
+      this.allTasks = this.tasksService.getTasks();
+    }
+    getDepartments(): void {
+      this.allDepartments = this.departmentsService.getDepartments();
     }
 }

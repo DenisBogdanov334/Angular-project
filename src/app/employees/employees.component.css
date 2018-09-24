@@ -22,3 +22,6 @@ th , td{
 .create, .update {
   margin-left: 2em;
 }
+ol{
+  list-style-type: none;
+}
