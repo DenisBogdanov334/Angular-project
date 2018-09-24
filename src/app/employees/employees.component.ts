@@ -34,12 +34,12 @@ export class EmployeesComponent implements OnInit {
 
     //Corect information about selected Employee
     employeeOnClick(employee: Employee):void{
-    this.selectedEmployee = employee;
-    this.selectedEmployee.Name = this.allTasks.filter( tsk =>{
-        return employee.Number === tsk.Number;
-      })
-    this.selectedEmployee.DepName = this.allDepartments.filter( dep => {
-        return employee.DepNumber === dep.DepNumber;
+      this.selectedEmployee = employee;
+      this.selectedEmployee.Name = this.allTasks.filter( tsk =>{
+          return employee.Number === tsk.Number;
+        })
+      this.selectedEmployee.DepName = this.allDepartments.filter( dep => {
+          return employee.DepNumber === dep.DepNumber;
     })
 
     }

@@ -1,7 +1,12 @@
+import { Employee } from '../employees/employees'
+import { Task } from '../tasks/tasks'
 
 export class Department{
   DepNumber: number;
   DepName: string;
+  EmpName: Employee[];
+  Name: Task[];
+
   //Number: number;
 
   /*

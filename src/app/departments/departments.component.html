@@ -24,7 +24,7 @@
 
 	<!--Edit the department -->
 		<div class="update" *ngIf="selectedDepartment">
-			<h3>{{selectedDepartment.DepName}}Details</h3>
+			<h3>{{selectedDepartment.DepName}} Details</h3>
 			<div>
 
 				<label for="editDepName" class="material">Department Name</label>
@@ -32,9 +32,23 @@
 				<label for="editDepNumber" class="material">Department Number</label>
 				<input type="text" class="material" [(ngModel)]="selectedDepartment.DepNumber" placeholder="Department Number"/>
 
+				<ol>
+					employees
+					<li *ngFor="let emp of selectedDepartment.EmpName">
+						{{emp.FirstName}} {{emp.LastName}}
+					</li>
+				</ol>
+				<ol>
+					tasks :
+					<li *ngFor="let tsk of selectedDepartment.Name">
+						{{tsk.Name}}
+					</li>
+				</ol>
+
 				<button class="btndelete" (click)="delete()">Delete Department</button>
 			</div>
 		</div>
+
 
 	<!-- Add new table to This List -->
 		<div class="create">

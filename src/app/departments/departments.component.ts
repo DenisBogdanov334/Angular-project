@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from './departments';
-import { DEPARTMENTS } from './mock-department'
 import { DepartmentsService } from './departments.service'
+
+import { Task } from '../tasks/tasks'
+import { TasksService } from '../tasks/tasks.service';
+import { Employee } from '../employees/employees'
+import { EmployeesService } from '../employees/employees.service';
 
 @Component({
   selector: 'app-departments',
@@ -15,15 +19,29 @@ export class DepartmentsComponent implements OnInit {
     selectedDepartment: Department;
     creatingDepartment: boolean =  false;
 
-    constructor(private departmentService: DepartmentsService) {}
+    allEmployees: Employee[];
+    allTasks: Task[];
+
+    constructor(private departmentService: DepartmentsService,
+                private tasksService:TasksService,
+                private employeesService: EmployeesService) {}
 
 
     ngOnInit() {
       this.getDepartments();
+      this.getTasks();
+      this.getEmployees();
     }
 
     departmentOnClick(department: Department): void{
       this.selectedDepartment = department;
+      this.selectedDepartment.EmpName = this.allEmployees.filter(emp => {
+        return this.selectedDepartment.DepNumber === emp.DepNumber;
+      })
+
+      this.selectedDepartment.Name = this.allTasks.filter(tsk => {
+        return this.selectedDepartment.DepNumber === tsk.DepNumber;
+      })
     }
 
     create(depnumber:number,depname:string): void{
@@ -45,4 +63,10 @@ export class DepartmentsComponent implements OnInit {
     getDepartments(): void{
       this.departments = this.departmentService.getDepartments();
     }
-  }
+    getTasks(): void {
+      this.allTasks = this.tasksService.getTasks();
+    }
+    getEmployees(): void{
+      this.allEmployees = this.employeesService.getEmployees();
+    }
+}
