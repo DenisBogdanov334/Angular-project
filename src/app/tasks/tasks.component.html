@@ -41,11 +41,12 @@
 					<option value=3 >Marketing</option>
 			</select><br>
 
-			<!--
+			<!-- show employees -->
+			<label for="showEmployee" class="material">Employees : </label>
 			<ul class="showEmployees">
-				<li *ngFor = "let EmpNumber of EmpNumbers">{{selectedTask.EmpNumber}}</li>
+				<li *ngFor = "let emp of selectedTask.Employees">{{emp.FirstName}}  {{emp.LastName}}</li>
 			</ul>
-			-->
+
 
 			<button class="btndelete" (click)="delete()">Delete Task</button>
 		</div>

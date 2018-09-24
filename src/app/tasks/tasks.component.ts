@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './tasks';
 import { TasksService } from './tasks.service';
+import { Employee } from '../employees/employees';
+import { EmployeesService } from '../employees/employees.service';
+import { Department } from '../departments/departments';
+
 
 
 @Component({
@@ -10,18 +14,26 @@ import { TasksService } from './tasks.service';
 })
 
 export class TasksComponent implements OnInit {
+    allemployees : Employee[];
 
     tasks: Task[];
     selectedTask: Task;
+
     creatingTask: boolean =  false;
-    constructor(private tasksService:TasksService) { }
+    constructor(private tasksService: TasksService,
+                private employeesSevice: EmployeesService) { }
 
     ngOnInit() {
       this.getTasks();
+      this.getEmployees();
     }
 
     taskOnClick(task: Task):void{
-    this.selectedTask = task;
+      let newtask = task;
+      newtask.Employees = this.allemployees.filter(emp => {
+        return task.EmpNumber.includes(emp.EmpNumber);
+      })
+      this.selectedTask = newtask;
     }
 
     create(number: number,name: string, DepNumber: string ,EmpNmuber: number): void{
@@ -32,7 +44,7 @@ export class TasksComponent implements OnInit {
       newTask.Name = name;
       newTask.EmpNumber = [EmpNmuber];
       newTask.DepNumber = Number(DepNumber);
-      this.tasks.push(newTask);
+      //this.tasks.push(newTask);
       this.creatingTask = false;
     }
 
@@ -41,9 +53,12 @@ export class TasksComponent implements OnInit {
       this.tasks.splice(selectedTaskIndex, 1);
       this.selectedTask = null;
     }
-
     getTasks(): void {
       this.tasks = this.tasksService.getTasks();
+    }
+
+    getEmployees(): void {
+      this.allemployees = this.employeesSevice.getEmployees();
     }
 
 }
