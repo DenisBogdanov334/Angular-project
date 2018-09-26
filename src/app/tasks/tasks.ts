@@ -1,9 +1,12 @@
-import { Employee } from '../employees/employees'
+import { Employee } from '../employees/employees';
+import { Department } from '../departments/departments';
+
 export class Task{
-   Number: number;
+   Number: number;　// should make it unique
    Name: string;
-   DepNumber: number;
-   EmpNumber: number[];
-   Employees: Employee[];
-  constructor(){}
+   DepNumber?: number;
+
+   Employees?: Employee[];
+   Departments?: Department[];
+
 }

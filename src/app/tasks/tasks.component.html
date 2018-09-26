@@ -36,9 +36,9 @@
 			<!--Display Department selected task delong-->
 			<label for="Deapartment" class="material">Department : </label>
 			<select name="Department" [(ngModel)]="selectedTask.DepNumber" >
-					<option value=1 >IT</option>
-					<option value=2 >Personnel</option>
-					<option value=3 >Marketing</option>
+					<option *ngFor="let dep of selectedTask.Departments" [value]=dep.DepNumber>
+						{{dep.DepName}}
+					</option>
 			</select><br>
 
 			<!-- show employees -->
@@ -56,7 +56,7 @@
 <!-- Create new task -->
 	<div class="create">
 		<div *ngIf="creatingTask">
-			<h2>Add new task</h2>
+			<h3>Add new task</h3>
 			<!-- Create new task number -->
 			<label for="Number" class="material">Task Number : </label>
 			<input type="text" id="Number" [(ngModel)]="Number" placeholder="Task Number"/><br>
@@ -67,9 +67,11 @@
 
 			<label for="task" class="material">Department : </label>
 			<select name="task" [(ngModel)]="DepNumber" >
-					<option value=1 >IT</option>
-					<option value=2 >Personnel</option>
-					<option value=3 >Marketing</option>
+					<option value="" disabled="disabled">Choose Department </option>
+					<option *ngFor="let dep of allDepartmanet" value=dep.DepNumber> <!--doesn't work -->
+							{{dep.DepName}}
+					</option>
+
 			</select>
 
 			<button class="pop" (click)="create(Number,Name,DepNumber)">Create</button>
