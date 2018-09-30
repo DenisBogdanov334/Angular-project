@@ -2,20 +2,35 @@ h2{
   margin-left: 8em;
 }
 
-.module {
-  font-size: 30px;
-  padding: 20px;
+a {
+  font-size: 25px;
   text-align: center;
   color: #eee;
-  width:160px;
-  height:80px;
+  min-width: 160px;
+  min-height: 50px;
   background-color: #607d8b;
   border-radius: 2px;
-  margin: 1em;
+  margin-top:  0.5em;
+  margin-left: 1em;
   float: left;
 }
-.module:hover {
+
+a:hover {
   background-color: #eee;
   cursor: pointer;
   color: #607d8b;
+}
+table{
+  padding-left: 2em
+}
+#applist{
+  margin-left: 13em;
+  float:none;
+}
+
+.overview{
+  padding-top: 3em;
+  margin-left: 13em;
+  margin-top: 2em;
+
 }

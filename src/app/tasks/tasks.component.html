@@ -9,7 +9,6 @@
 				<th class="name">Name</th>
 			</tr>
 		</thead>
-
 		<tbody>
 			<tr *ngFor="let task of tasks"(click)="taskOnClick(task)"[class.selected]="task === selectedTask">
 				<td class="number">{{task.Number}}</td>
@@ -58,24 +57,22 @@
 		<div *ngIf="creatingTask">
 			<h3>Add new task</h3>
 			<!-- Create new task number -->
-			<label for="Number" class="material">Task Number : </label>
-			<input type="text" id="Number" [(ngModel)]="Number" placeholder="Task Number"/><br>
+			<label for="Number" class="material">Number : {{newTaskNumber}}</label><br />
 
 			<!-- Create new task name -->
 			<label for="Name" class="material">Task Name : </label>
 			<input type="text" id="Name" [(ngModel)]="Name" placeholder="Task Name"/><br>
 
-			<label for="task" class="material">Department : </label>
-			<select name="task" [(ngModel)]="DepNumber" >
+
+			<label for="DepNumber" class="material">Department : </label>
+			<select name="newDepNumber" id="newDepNumber" [(ngModel)]="DepNumber" >
 					<option value="" disabled="disabled">Choose Department </option>
-					<option *ngFor="let dep of allDepartmanet" value=dep.DepNumber> <!--doesn't work -->
+					<option *ngFor="let dep of allDepartmanet" [value]="dep.DepNumber">
 							{{dep.DepName}}
 					</option>
-
 			</select>
 
-			<button class="pop" (click)="create(Number,Name,DepNumber)">Create</button>
+			<button class="pop" (click)="create(Name,DepNumber)">Create</button>
 		</div>
 	</div>
-
 </div>

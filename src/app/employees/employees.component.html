@@ -7,6 +7,7 @@
 	<table st-table="rowCollection" class="table table-stripped table-hover">
 		<thead>
 			<tr>
+				<th>EmpNumber</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 			</tr>
@@ -16,8 +17,10 @@
 			<tr *ngFor="let employee of employees"
 			(click)="employeeOnClick(employee)"
 			[class.selected]="employee === selectedEmployee">
+				<td>{{employee.EmpNumber}}</td>
 				<td>{{employee.FirstName}}</td>
 				<td>{{employee.LastName}}</td>
+				
 			</tr>
 		</tbody>
 	</table>
@@ -30,36 +33,62 @@
 	<div class="update" *ngIf="selectedEmployee">
 		<h3>{{selectedEmployee.FirstName}} Details</h3>
 			<div>
-				<label for="FirstName" class="material">Employee First Name</label>
+				<label>EmpNumber : {{selectedEmployee.EmpNumber}}</label><br>
+
+				<label for="FirstName" class="material">Employee First Name : </label>
 				<input type="text" class="material" [(ngModel)]="selectedEmployee.FirstName" placeholder="Employee FirstName"/>
+				<br>
 
-				<label for="LastName" class="material">Employee Family Name</label>
+				<label for="LastName" class="material">  Employee Family Name : </label>
 				<input type="text" class="material" [(ngModel)]="selectedEmployee.LastName" placeholder="Employee LastName"/>
-
-				<button class="btndelete" (click)="delete()">Delete Employee</button>
+				<br>
 			</div>
 			<!--Display Task-->
-			<ol>
-				<li *ngFor="let tsk of selectedEmployee.Name">Task : {{tsk.Name}}</li>
-			</ol>
+			<label for="task">Task : </label>
+			<select name="task" [(ngModel)]="selectedEmployee.Number">
+				<option *ngFor="let tsk of allTasks" [value]="tsk.Number">
+					{{tsk.Name}}
+				</option>
+			</select><br />
 			<!-- Display Department -->
-			<ol>
-				<li *ngFor="let dep of selectedEmployee.DepName">Department : {{dep.DepName}}</li>
-			</ol>
-			
+			<label for="department" >  Department : </label>
+			<select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
+					<option *ngFor="let dep of allDepartments" [value]=dep.DepNumber>
+						{{dep.DepName}}
+					</option>
+			</select><br>
+
+			<button class="btndelete" (click)="delete()">Delete Employee</button>
 	</div>
 
 	<!-- Create new employer -->
 	<div class="create">
 		<div *ngIf="creatingEmployee">
 			<h3>Add new employee</h3>
-				<label for="FirstName" class="material">Employee First Name</label>
+				<label>EmpNumber : {{newEmpNumber}}  </label><br />
+
+				<label for="FirstName" class="material">Employee First Name : </label>
 				<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
+				<br />
 
-				<label for="LastName" class="material">Employee Last Name</label>
+				<label for="LastName" class="material">Employee Last Name : </label>
 				<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
+				<br />
 
-				<button class="pop" (click)="create(FirstName,LastName)">Create</button>
+				<label for = "DepartmentForNew">Department : </label>
+				<select id = "DepartmentForNew" [(ngModel)]="DepNumber">
+					<option *ngFor="let dep of allDepartments" [value]="dep.DepNumber" >
+						{{dep.DepName}}
+					</option>
+				</select><br>
+
+				<label>Task : </label>
+				<select [(ngModel)]="Number" >
+					<option *ngFor="let tsk of allTasks" [value]="tsk.Number">
+						{{tsk.Name}}
+					</option>
+				</select><br>
+				<button class="pop" (click)="create(FirstName,LastName,DepNumber,Number)">Create</button>
 		</div>
 	</div>
 

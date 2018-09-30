@@ -6,9 +6,11 @@ export class Employee{
   FirstName: string;
   LastName: string;
 
-  Number: number;  //means task number
-  Name: Task[];  //means employees number
+  Number?: number;  //means task number
+  Name?: string;  //means employees number
+  DepNumber?: number;
+  DepName?: string;
 
-  DepNumber: number;
-  DepName: Department[];
+  Tasks?: Task[];
+  Departments?: Department[];
 }

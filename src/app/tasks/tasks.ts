@@ -8,5 +8,4 @@ export class Task{
 
    Employees?: Employee[];
    Departments?: Department[];
-
 }

@@ -12,15 +12,30 @@ import { TasksService } from '../tasks/tasks.service'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  departments: Department[]=[];
-  constructor(private departmentsService:DepartmentsService) { }
+  departments: Department[];
+  employees: Employee[];
+  tasks: Task[];
+  constructor(private departmentsService:DepartmentsService,
+              private employeesService: EmployeesService,
+              private tasksService: TasksService) { }
 
   ngOnInit() {
     this.getDepartments();
+    this.getEmployees();
+    this.getTasks();
   }
 
   getDepartments(): void {
     this.departments = this.departmentsService.getDepartments();
+    this.departments = this.departments.slice(0,3)
+  }
+  getEmployees(): void {
+    this.employees = this.employeesService.getEmployees();
+    this.employees = this.employees.slice(0,5)
+  }
+  getTasks(): void {
+    this.tasks = this.tasksService.getTasks();
+    this.tasks = this.tasks.slice(0,5);
   }
 
 }

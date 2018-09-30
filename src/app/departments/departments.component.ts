@@ -18,6 +18,7 @@ export class DepartmentsComponent implements OnInit {
     departments: Department[];
     selectedDepartment: Department;
     creatingDepartment: boolean =  false;
+    newDepNumber : number;
 
     allEmployees: Employee[];
     allTasks: Task[];
@@ -44,11 +45,11 @@ export class DepartmentsComponent implements OnInit {
       })
     }
 
-    create(depnumber:number,depname:string): void{
+    create(depname:string): void{
       if (depname.length == 0)
       return;
       const newDepartment = new Department();
-      newDepartment.DepNumber=depnumber;
+      newDepartment.DepNumber = this.newDepNumber;
       newDepartment.DepName=depname;
       this.departments.push(newDepartment);
       //this.creatingDepartment = false;
@@ -62,6 +63,7 @@ export class DepartmentsComponent implements OnInit {
 
     getDepartments(): void{
       this.departments = this.departmentService.getDepartments();
+      this.newDepNumber = this.departments.length + 1;
     }
     getTasks(): void {
       this.allTasks = this.tasksService.getTasks();

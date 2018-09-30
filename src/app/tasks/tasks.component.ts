@@ -8,7 +8,6 @@ import { Department } from '../departments/departments';
 import { DepartmentsService } from '../departments/departments.service';
 
 
-
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -20,6 +19,7 @@ export class TasksComponent implements OnInit {
     allDepartmanet: Department[];
     tasks: Task[];
     selectedTask: Task;
+    newTaskNumber: number;
 
     creatingTask: boolean =  false;
     constructor(private tasksService: TasksService,
@@ -36,19 +36,19 @@ export class TasksComponent implements OnInit {
       this.selectedTask = task;
       this.selectedTask.Departments = this.allDepartmanet;
       this.selectedTask.Employees = this.allemployees.filter( emp => {
-        return task.Number === emp.Number
+        return task.Number === emp.Number;
       });
-
-
     }
 
-    create(number: number,　name: string ): void{
+    //create(number: string,　name: string, DepNumber: number ): void{
+    create(name: string, depNumber: number ): void{
     if (name.length == 0)
     return;
+
     const newTask = new Task();
-    newTask.Number = number;
+    newTask.Number = this.newTaskNumber;
     newTask.Name = name;
-    //newTask.DepNumber = Number(depNumber);
+    newTask.DepNumber = depNumber;
     this.tasks.push(newTask);
     this.creatingTask = false;
     }
@@ -64,6 +64,7 @@ export class TasksComponent implements OnInit {
 
     getEmployees(): void {
       this.allemployees = this.employeesSevice.getEmployees();
+      this.newTaskNumber = this.tasks.length + 1;
     }
     getDepartments(): void {
       this.allDepartmanet = this.departmentsService.getDepartments();

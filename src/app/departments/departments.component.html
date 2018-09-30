@@ -26,12 +26,26 @@
 		<div class="update" *ngIf="selectedDepartment">
 			<h3>{{selectedDepartment.DepName}} Details</h3>
 			<div>
+				<label for="editDepNumber" class="material"> Department Number : {{selectedDepartment.DepNumber}}</label><br>
 
-				<label for="editDepName" class="material">Department Name</label>
+				<label for="editDepName" class="material">Department Name : </label>
 				<input type="text" class="material" [(ngModel)]="selectedDepartment.DepName" placeholder="Department Name"/>
-				<label for="editDepNumber" class="material">Department Number</label>
-				<input type="text" class="material" [(ngModel)]="selectedDepartment.DepNumber" placeholder="Department Number"/>
 
+				<table class="selected">
+					<tr>
+						<th>Employees: </th>
+						<td *ngFor="let emp of selectedDepartment.EmpName">{{emp.FirstName}} {{emp.LastName}},
+						</td>
+					</tr>
+				</table>
+				<table class="selected">
+					<tr>
+						<th>Tasks: </th>
+						<td *ngFor="let tsk of selectedDepartment.Name">{{tsk.Name}}</td>
+					<tr>
+				</table>
+
+				<!--
 				<ol>
 					employees
 					<li *ngFor="let emp of selectedDepartment.EmpName">
@@ -44,6 +58,7 @@
 						{{tsk.Name}}
 					</li>
 				</ol>
+			-->
 
 				<button class="btndelete" (click)="delete()">Delete Department</button>
 			</div>
@@ -55,11 +70,12 @@
 
 			<div *ngIf="creatingDepartment">
 				<h3>Add new department</h3>
+				<label for="DepNumber" class="material">Department Number : {{newDepNumber}}</label><br>
+
 				<label for="DepName" class="material">Department Name</label>
 				<input type="text" id="DepName" [(ngModel)]="DepName" placeholder="Department Name"/>
-				<label for="DepNumber" class="material">Department Number</label>
-				<input type="text" id="DepNumber" [(ngModel)]="DepNumber" placeholder="Department Number"/>
-				<button class="pop" (click)="create(DepNumber,DepName)">Create</button>
+				<br>
+				<button class="pop" (click)="create(DepName)">Create</button>
 			</div>
 		</div>
 
