@@ -20,7 +20,7 @@
 				<td>{{employee.EmpNumber}}</td>
 				<td>{{employee.FirstName}}</td>
 				<td>{{employee.LastName}}</td>
-				
+
 			</tr>
 		</tbody>
 	</table>
@@ -36,27 +36,35 @@
 				<label>EmpNumber : {{selectedEmployee.EmpNumber}}</label><br>
 
 				<label for="FirstName" class="material">Employee First Name : </label>
-				<input type="text" class="material" [(ngModel)]="selectedEmployee.FirstName" placeholder="Employee FirstName"/>
+				<mat-form-field class="material">
+    			<input matInput [(ngModel)]="selectedEmployee.FirstName">
+  			</mat-form-field>
 				<br>
 
 				<label for="LastName" class="material">  Employee Family Name : </label>
-				<input type="text" class="material" [(ngModel)]="selectedEmployee.LastName" placeholder="Employee LastName"/>
+				<mat-form-field class="material">
+    			<input matInput [(ngModel)]="selectedEmployee.LastName">
+  			</mat-form-field>
 				<br>
 			</div>
 			<!--Display Task-->
 			<label for="task">Task : </label>
-			<select name="task" [(ngModel)]="selectedEmployee.Number">
-				<option *ngFor="let tsk of allTasks" [value]="tsk.Number">
-					{{tsk.Name}}
-				</option>
-			</select><br />
+			<mat-form-field>
+			  <mat-select name="task" [(ngModel)]="selectedEmployee.Number">
+			    <mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number">
+			      {{tsk.Name}}
+			    </mat-option>
+			  </mat-select>
+			</mat-form-field>
 			<!-- Display Department -->
 			<label for="department" >  Department : </label>
-			<select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
-					<option *ngFor="let dep of allDepartments" [value]=dep.DepNumber>
-						{{dep.DepName}}
-					</option>
-			</select><br>
+			<mat-form-field>
+			  <mat-select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
+			    <mat-option *ngFor="let dep of allDepartments" [value]=dep.DepNumber>
+			      {{dep.DepName}}
+			    </mat-option>
+			  </mat-select>
+			</mat-form-field><br>
 
 			<button class="btndelete" (click)="delete()">Delete Employee</button>
 	</div>
@@ -68,26 +76,34 @@
 				<label>EmpNumber : {{newEmpNumber}}  </label><br />
 
 				<label for="FirstName" class="material">Employee First Name : </label>
-				<input type="text" id="FirstName" [(ngModel)]="FirstName" placeholder="Employee First Name"/>
-				<br />
+				<mat-form-field class="material">
+					<input matInput [(ngModel)]="FirstName" placeholder="Employee First Name">
+				</mat-form-field>
+				<br>
 
 				<label for="LastName" class="material">Employee Last Name : </label>
-				<input type="text" id="LastName" [(ngModel)]="LastName" placeholder="Employee Last Name"/>
+				<mat-form-field class="material">
+					<input matInput [(ngModel)]="LastName" placeholder="Employee Last Name">
+				</mat-form-field>
 				<br />
 
 				<label for = "DepartmentForNew">Department : </label>
-				<select id = "DepartmentForNew" [(ngModel)]="DepNumber">
-					<option *ngFor="let dep of allDepartments" [value]="dep.DepNumber" >
-						{{dep.DepName}}
-					</option>
-				</select><br>
+				<mat-form-field>
+					<mat-select name="task" [(ngModel)]="DepNumber">
+						<mat-option *ngFor="let dep of allDepartments" [value]="dep.DepNumber" >
+							{{dep.DepName}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
 
 				<label>Task : </label>
-				<select [(ngModel)]="Number" >
-					<option *ngFor="let tsk of allTasks" [value]="tsk.Number">
-						{{tsk.Name}}
-					</option>
-				</select><br>
+				<mat-form-field>
+					<mat-select name="task" [(ngModel)]="Number" >
+						<mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number" >
+							{{tsk.Name}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field><br>
 				<button class="pop" (click)="create(FirstName,LastName,DepNumber,Number)">Create</button>
 		</div>
 	</div>
