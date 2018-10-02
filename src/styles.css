@@ -2,19 +2,19 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 h1 {
-  color: #369;
+  color: #3F51B5;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
   margin-bottom: 1.5em;
 }
 
 h2 {
-  color: #369;
+  color: #3F51B5;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
 h3{
-  color: Red;
+  color: #3F51B5;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }

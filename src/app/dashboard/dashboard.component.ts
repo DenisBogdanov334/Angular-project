@@ -15,6 +15,9 @@ export class DashboardComponent implements OnInit {
   departments: Department[];
   employees: Employee[];
   tasks: Task[];
+  ColumnsForDepartments: string[] = ['DepNumber', 'DepName'];
+  ColumnsForEmployees: string[] = ['EmpNumber', 'FirstName', 'LastName']
+  ColumnsForTasks: string[] = ['Number', 'Name']
   constructor(private departmentsService:DepartmentsService,
               private employeesService: EmployeesService,
               private tasksService: TasksService) { }

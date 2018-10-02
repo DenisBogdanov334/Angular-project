@@ -1,63 +1,64 @@
-<div class="dashboard">
+
   <h2>Dashboard</h2>
 
-    <div id="applist">
-      <a routerLink="/departments">Departments</a>
-      <a routerLink="/employees">Employees</a>
-      <a routerLink="/tasks">Tasks</a>
-    </div><br><br>
-
     <div class="overview">
-      <h3>Overview</h3>
-      <h4>Departments</h4>
-      <table st-table="rowCollection" class="table table-stripped table-hover">
-  			<thead>
-  				<tr>
-  					<th class="number">Number</th>
-  					<th class="name">Name</th>
-  			</tr>
-  			</thead>
-  			<tbody>
-  				<tr *ngFor="let department of departments">
-  					<td class="number">{{department.DepNumber}}</td>
-  					<td class="name">{{department.DepName}}</td>
-  				</tr>
-  			</tbody>
-      </table>
 
-      <h4>Employees</h4>
-      <table st-table="rowCollection" class="table table-stripped table-hover">
-        <thead>
-          <tr>
-            <th>EmpNumber</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let employee of employees">
-            <td>{{employee.EmpNumber}}</td>
-            <td>{{employee.FirstName}}</td>
-            <td>{{employee.LastName}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="list">
+        <h4>Departments</h4>
+        <table mat-table [dataSource]="departments" class="mat-elevation-z8">
+          <ng-container matColumnDef="DepNumber">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let department">{{department.DepNumber}}</td>
+          </ng-container>
+          <ng-container matColumnDef="DepName">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let department">{{department.DepName}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="ColumnsForDepartments"></tr>
+          <tr mat-row *matRowDef="let row; columns: ColumnsForDepartments;"></tr>
+        </table>
+      </div>
 
-      <h4>Tasks</h4>
-      <table st-table="rowCollection" class="table table-stripped table-hover">
-    		<thead>
-    			<tr>
-    				<th class="number">Number</th>
-    				<th class="name">Name</th>
-    			</tr>
-    		</thead>
-    		<tbody>
-    			<tr *ngFor="let task of tasks">
-    				<td class="number">{{task.Number}}</td>
-    				<td class="name">{{task.Name}}</td>
-    			</tr>
-    		</tbody>
-    	</table>
-    </div>
+      <div class="list">
+        <h4>Employees</h4>
+        <table mat-table [dataSource]="employees" class="mat-elevation-z8">
 
+          <ng-container matColumnDef="EmpNumber">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let employee">{{employee.EmpNumber}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="FirstName">
+            <th mat-header-cell *matHeaderCellDef> FirstName </th>
+            <td mat-cell *matCellDef="let employee">{{employee.FirstName}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="LastName">
+            <th mat-header-cell *matHeaderCellDef> LastName </th>
+            <td mat-cell *matCellDef="let employee">{{employee.LastName}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="ColumnsForEmployees"></tr>
+          <tr mat-row *matRowDef="let myrow; columns: ColumnsForEmployees;"></tr>
+        </table>
+      </div>
+
+      <div class="list">
+        <h4>Tasks</h4>
+        <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="Number">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let task"> {{task.Number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let task"> {{task.Name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="ColumnsForTasks"></tr>
+            <tr mat-row *matRowDef="let row; columns: ColumnsForTasks;"></tr>
+        </table>
+      </div>
 </div>

@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -23,16 +26,17 @@ import { MatInputModule } from '@angular/material/input';
     DashboardComponent
   ],
   imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
     //Angular Module
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatSelectModule,
     MatInputModule,
-
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
+    MatTableModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

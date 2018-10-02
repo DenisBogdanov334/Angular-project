@@ -19,9 +19,11 @@ export class TasksComponent implements OnInit {
     allDepartmanet: Department[];
     tasks: Task[];
     selectedTask: Task;
-    newTaskNumber: number;
 
+    newTaskNumber: number;
     creatingTask: boolean =  false;
+    ColumnsForTasks: string[] = ['Number', 'Name'];
+
     constructor(private tasksService: TasksService,
                 private employeesSevice: EmployeesService,
                 private departmentsService: DepartmentsService) { }
