@@ -32,6 +32,44 @@
 
 
 	<div class="option">
+		<div class="option">
+			
+		  <!--Edit the department -->
+		  <div class="update" *ngIf="selectedDepartment">
+		    <h3>{{selectedDepartment.DepName}} Details</h3>
+		    <div>
+		      <label for="editDepNumber" class="material">
+		         Department Number : {{selectedDepartment.DepNumber}}
+		       </label><br>
+
+		      <label for="editDepName" class="material">Department Name : </label>
+		      <mat-form-field class="editDepName">
+		        <input matInput [(ngModel)]="selectedDepartment.DepName" >
+		      </mat-form-field>
+
+		      <!-- Employees of electedDepartment -->
+		      <table class="EmployeeForDepartment">
+		        <tr>
+		          <th>Employees: </th>
+		          <td *ngFor="let emp of selectedDepartment.EmpName">{{emp.FirstName}} {{emp.LastName}},
+		          </td>
+		        </tr>
+		      </table>
+
+		      <!-- Department of electedDepartment -->
+		      <table class="TaskForDepartment">
+		        <tr>
+		          <th>Tasks: </th>
+		          <td *ngFor="let tsk of selectedDepartment.Name">{{tsk.Name}}</td>
+		        <tr>
+		      </table>
+
+		      <button mat-stroked-button color="primary" class="btndelete" (click)="delete()">
+		        Delete Department
+		      </button>
+		    </div>
+		  </div>
+
 		<!-- Add new table to This List -->
 		<div class="create">
 
@@ -44,14 +82,14 @@
     			<input matInput placeholder="Department Name" [(ngModel)]="DepName">
   			</mat-form-field>
 				<br>
-				
+
 				<button mat-stroked-button color="primary"
 						class="pop" (click)="create(DepName)">
 					Create
 				</button>
 			</div>
 		</div>
-		<app-department-detail [selectedDepartment]="selectedDepartment"></app-department-detail>
+
 	</div>
 
 </div>

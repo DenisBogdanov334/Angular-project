@@ -28,7 +28,7 @@ export class DepartmentsComponent implements OnInit {
     allTasks: Task[];
     ColumnsForDepartments: string[] = ['DepNumber', 'DepName']
 
-    constructor(private departmentService: DepartmentsService,
+    constructor(private departmentsService: DepartmentsService,
                 private tasksService:TasksService,
                 private employeesService: EmployeesService,
                 private dashboardService: DashboardService,
@@ -39,7 +39,7 @@ export class DepartmentsComponent implements OnInit {
       this.getDepartments();
       this.getTasks();
       this.getEmployees();
-    //  this.getSelectedDepartment();
+      this.getSelectedDepartment();
     }
 
     departmentOnClick(department: Department): void{
@@ -70,7 +70,7 @@ export class DepartmentsComponent implements OnInit {
     }
 
     getDepartments(): void{
-      this.departments = this.departmentService.getDepartments();
+      this.departments = this.departmentsService.getDepartments();
       this.newDepNumber = this.departments.length + 1;
     }
     getTasks(): void {
@@ -79,11 +79,8 @@ export class DepartmentsComponent implements OnInit {
     getEmployees(): void{
       this.allEmployees = this.employeesService.getEmployees();
     }
-    /*
-    getSelectedDepartment(): void{
-      this.selectedDepartment = this.dashboardService.getSelectedDepartment();
+    getSelectedDepartment(): void {
+      this.selectedDepartment = this.departmentsService.getSelectedDepartments();
     }
-    */
-
 
 }

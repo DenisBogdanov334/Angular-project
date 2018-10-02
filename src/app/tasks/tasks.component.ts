@@ -40,6 +40,7 @@ export class TasksComponent implements OnInit {
       this.getTasks();
       this.getEmployees();
       this.getDepartments();
+      this.getSelectedTask();
     }
 
     selectToday() {
@@ -82,6 +83,10 @@ export class TasksComponent implements OnInit {
     }
     getDepartments(): void {
       this.allDepartmanet = this.departmentsService.getDepartments();
+    }
+    
+    getSelectedTask(): void {
+      this.selectedTask = this.tasksService.getSelectedService();
     }
 
 }

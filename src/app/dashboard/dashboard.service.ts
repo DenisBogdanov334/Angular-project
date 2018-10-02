@@ -11,8 +11,3 @@ export class DashboardService {
   selectedDepartment: Department[];
   constructor() { }
 }
-/*
-getSelectedDepartment(): Department[] {
-   return this.selectedDepartment = this.dash.selectedDepartment;
-}
-*/

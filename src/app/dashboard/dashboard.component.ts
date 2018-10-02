@@ -49,11 +49,15 @@ export class DashboardComponent implements OnInit {
 
   departmentOnClick(department: Department): void{
     this.selectedDepartment = department;
+    this.departmentsService.setSelectedDepartment(this.selectedDepartment);
   }
   employeeOnClick(employee: Employee):void{
     this.selectedEmployee = employee;
+    this.employeesService.setSelectedEmployee(this.selectedEmployee);
   }
   taskOnClick(task: Task):void{
     this.selectedTask = task;
+    this.tasksService.setSelectedTask(this.selectedTask);
   }
+
 }

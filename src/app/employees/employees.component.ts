@@ -31,6 +31,7 @@ export class EmployeesComponent implements OnInit {
       this.getEmployees();
       this.getTasks();
       this.getDepartments();
+      this.getSelectedEmployee();
     }
 
     //Corect information about selected Employee
@@ -78,5 +79,8 @@ export class EmployeesComponent implements OnInit {
     }
     getDepartments(): void {
       this.allDepartments = this.departmentsService.getDepartments();
+    }
+    getSelectedEmployee(): void {
+      this.selectedEmployee = this.employeesService.getSelectedEmployee();
     }
 }

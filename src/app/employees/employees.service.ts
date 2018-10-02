@@ -7,10 +7,17 @@ import { Employees } from './mock-employee'
   providedIn: 'root'
 })
 export class EmployeesService {
+  selectedEmployee : Employee;
 
   constructor() { }
 
   getEmployees(): Employee[] {
     return Employees;
+  }
+  setSelectedEmployee(emp:Employee){
+    this.selectedEmployee = emp;
+  }
+  getSelectedEmployee() {
+    return this.selectedEmployee;
   }
 }

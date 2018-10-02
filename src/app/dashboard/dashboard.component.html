@@ -4,17 +4,23 @@
 
       <div class="list">
         <h4>Departments</h4>
+
         <table mat-table [dataSource]="departments" class="mat-elevation-z8">
           <ng-container matColumnDef="DepNumber">
             <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let department" (click)="departmentOnClick(department)">
-                {{department.DepNumber}}
+            <td mat-cell *matCellDef="let department">
+                <a routerLink="/departments" (click)="departmentOnClick(department)">
+                  {{department.DepNumber}}
+                </a>
             </td>
           </ng-container>
+
           <ng-container matColumnDef="DepName">
             <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let department" (click)="departmentOnClick(department)">
-                {{department.DepName}}
+                <a routerLink="/departments" (click)="departmentOnClick(department)">
+                  {{department.DepName}}
+                </a>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="ColumnsForDepartments"></tr>
@@ -22,28 +28,36 @@
         </table>
       </div>
 
+
+
       <div class="list">
         <h4>Employees</h4>
         <table mat-table [dataSource]="employees" class="mat-elevation-z8">
 
           <ng-container matColumnDef="EmpNumber">
             <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let employee" (click)="employeeOnClick(employee)">
-              {{employee.EmpNumber}}
+            <td mat-cell *matCellDef="let employee" >
+              <a routerLink="/employees" (click)="employeeOnClick(employee)">
+                {{employee.EmpNumber}}
+              </a>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="FirstName">
             <th mat-header-cell *matHeaderCellDef> FirstName </th>
-            <td mat-cell *matCellDef="let employee"(click)="employeeOnClick(employee)">
-              {{employee.FirstName}}
+            <td mat-cell *matCellDef="let employee">
+              <a routerLink="/employees" (click)="employeeOnClick(employee)">
+                {{employee.FirstName}}
+              </a>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="LastName">
             <th mat-header-cell *matHeaderCellDef> LastName </th>
-            <td mat-cell *matCellDef="let employee" (click)="employeeOnClick(employee)">
-              {{employee.LastName}}
+            <td mat-cell *matCellDef="let employee" >
+              <a routerLink="/employees" (click)="employeeOnClick(employee)">
+                {{employee.LastName}}
+              </a>
             </td>
           </ng-container>
 
@@ -52,21 +66,27 @@
         </table>
       </div>
 
+
+
       <div class="list">
         <h4>Tasks</h4>
         <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
 
           <ng-container matColumnDef="Number">
               <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let task"(click)="taskOnClick(task)">
-                 {{task.Number}}
-                </td>
+              <td mat-cell *matCellDef="let task">
+                 <a routerLink="/tasks" (click)="taskOnClick(task)">
+                   {{task.Number}}
+                 </a>
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="Name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
               <td mat-cell *matCellDef="let task"(click)="taskOnClick(task)">
-                {{task.Name}}
+                <a routerLink="/tasks" (click)="taskOnClick(task)">
+                  {{task.Name}}
+                </a>
               </td>
             </ng-container>
 
@@ -75,120 +95,3 @@
         </table>
       </div>
     </div>
-
-
-
-    <div class="update" *ngIf="selectedDepartment">
-      <h3>{{selectedDepartment.DepName}} Details</h3>
-      <div>
-        <label for="editDepNumber" class="material">
-           Department Number : {{selectedDepartment.DepNumber}}
-         </label><br>
-
-        <label for="editDepName" class="material">Department Name : </label>
-        <mat-form-field class="editDepName">
-          <input matInput [(ngModel)]="selectedDepartment.DepName" >
-        </mat-form-field>
-
-        <!-- Employees of electedDepartment -->
-        <table class="EmployeeForDepartment">
-          <tr>
-            <th>Employees: </th>
-            <td *ngFor="let emp of selectedDepartment.EmpName">{{emp.FirstName}} {{emp.LastName}},
-            </td>
-          </tr>
-        </table>
-
-        <!-- Department of electedDepartment -->
-        <table class="TaskForDepartment">
-          <tr>
-            <th>Tasks: </th>
-            <td *ngFor="let tsk of selectedDepartment.Name">{{tsk.Name}}</td>
-          <tr>
-        </table>
-
-        <button mat-stroked-button color="primary" class="btndelete" (click)="delete()">
-          Delete Department
-        </button>
-      </div>
-
-
-      <div class="update" *ngIf="selectedEmployee">
-        <h3>{{selectedEmployee.FirstName}} Details</h3>
-          <div>
-            <label>EmpNumber : {{selectedEmployee.EmpNumber}}</label><br>
-
-            <label for="FirstName" class="material">Employee First Name : </label>
-            <mat-form-field class="material">
-              <input matInput [(ngModel)]="selectedEmployee.FirstName">
-            </mat-form-field>
-            <br>
-
-            <label for="LastName" class="material">  Employee Family Name : </label>
-            <mat-form-field class="material">
-              <input matInput [(ngModel)]="selectedEmployee.LastName">
-            </mat-form-field>
-            <br>
-          </div>
-          <!--Display Task-->
-          <label for="task">Task : </label>
-          <mat-form-field>
-            <mat-select name="task" [(ngModel)]="selectedEmployee.Number">
-              <mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number">
-                {{tsk.Name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field><br>
-          <!-- Display Department -->
-          <label for="department" >  Department : </label>
-          <mat-form-field>
-            <mat-select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
-              <mat-option *ngFor="let dep of allDepartments" [value]=dep.DepNumber>
-                {{dep.DepName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field><br>
-
-          <button mat-stroked-button color="primary"
-              class="btndelete" (click)="delete()">
-            Delete Employee
-          </button>
-      </div>
-
-
-
-      <div class="update" *ngIf="selectedTask">
-        <h3>{{selectedTask.Name}} Details</h3>
-        <div>
-          <!-- slelcted task number-->
-          <label for="editTaskNumber" class="material">Task Number : {{selectedTask.Number}}</label>
-          <br>
-          <!-- selected task name -->
-          <label for="editTaskName" class="material">Task Name : </label>
-          <mat-form-field class="editTaskName">
-            <input matInput [(ngModel)]="selectedTask.Name" >
-          </mat-form-field><br>
-
-          <!--Display Department selected task delong-->
-          <label for="Deapartment" class="material">Department : </label>
-          <mat-form-field name="Department">
-            <mat-select [(ngModel)]="selectedTask.DepNumber">
-              <mat-option *ngFor="let dep of selectedTask.Departments" [value]="dep.DepNumber">
-                {{dep.DepName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field><br>
-
-          <table class="showEmployees">
-            <tr>
-              <td>Employees: </td>
-              <td *ngFor = "let emp of selectedTask.Employees">{{emp.FirstName}} {{emp.LastName}} ,</td>
-            </tr>
-          </table>
-
-          <button mat-stroked-button color="primary"
-            class="btndelete" (click)="delete()">
-            Delete Task
-          </button>
-        </div>
-      </div>

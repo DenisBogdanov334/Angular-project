@@ -11,11 +11,19 @@ import {Observable, of} from 'rxjs';
   providedIn: 'root'
 })
 export class TasksService {
-
+  selectedTask: Task;
   constructor() { }
 
 
   getTasks(): Task[] {
     return Tasks;
   }
+
+  setSelectedTask(tsk: Task) {
+    this.selectedTask = tsk
+  }
+  getSelectedService() {
+    return this.selectedTask;
+  }
+
 }
