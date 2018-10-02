@@ -14,6 +14,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+// NgbModule
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -37,6 +43,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatTableModule,
     MatIconModule,
+    MatDatepickerModule,
+    // Ngb Module
+    NgbModule,
+    FontAwesomeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

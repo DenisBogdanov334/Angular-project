@@ -20,6 +20,7 @@ export class EmployeesComponent implements OnInit {
     newEmpNumber: number;
     allTasks: Task[];
     allDepartments: Department[];
+    ColumnsForEmployees: string[] = ['EmpNumber', 'FirstName','LastName']
 
 
     constructor(private employeesService: EmployeesService,

@@ -22,6 +22,7 @@ export class DepartmentsComponent implements OnInit {
 
     allEmployees: Employee[];
     allTasks: Task[];
+    ColumnsForDepartments: string[] = ['DepNumber', 'DepName']
 
     constructor(private departmentService: DepartmentsService,
                 private tasksService:TasksService,

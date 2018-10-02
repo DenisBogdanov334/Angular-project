@@ -1,27 +1,39 @@
 .department{
-  margin-left: 13em
+  margin-left: 8em
 }
-table {
-  padding-left: 2em;
+.mainlist{
+  width: 35%;
+  height: 100%;
+  float: left;
 }
-th{
-  padding-bottom: 7px;
+.mainlist table{
+  width: 100%;
 }
-th , td{
-  padding-left: 20px;
-}
-.number{
-  width: 0.5em;
-  text-align: center;
-}
-.name {
-  width: 12.5em;
+
+.option tr{
+  width:6em;
   text-align: left;
 }
-.pip {
-  margin-left: 1em;
-  margin-top: 0.7em;
+.mat-row:hover {
+  background-color: #F6F6F6	;
 }
-.create, .update {
-  margin-left: 2em;
+.selected{
+  background-color: #3F51B5;
+  color: white;
+}
+
+.option{
+ width:45%;
+ float: left;
+}
+.update, .create{
+  padding-left: 3em;
+}
+.option button{
+  margin-top: 10px;
+  margin-left: 15em;
+}
+.mainlist button{
+  margin-top: 10px;
+  margin-left: 15em;
 }

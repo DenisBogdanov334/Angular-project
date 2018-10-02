@@ -6,6 +6,8 @@ import { Employee } from '../employees/employees';
 import { EmployeesService } from '../employees/employees.service';
 import { Department } from '../departments/departments';
 import { DepartmentsService } from '../departments/departments.service';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -24,14 +26,24 @@ export class TasksComponent implements OnInit {
     creatingTask: boolean =  false;
     ColumnsForTasks: string[] = ['Number', 'Name'];
 
+    model: NgbDateStruct;
+    date: {year: number, month: number};
+
+
+
     constructor(private tasksService: TasksService,
                 private employeesSevice: EmployeesService,
-                private departmentsService: DepartmentsService) { }
+                private departmentsService: DepartmentsService,
+              private calendar: NgbCalendar) { }
 
     ngOnInit() {
       this.getTasks();
       this.getEmployees();
       this.getDepartments();
+    }
+
+    selectToday() {
+      this.model = this.calendar.getToday();
     }
 
     taskOnClick(task: Task):void{

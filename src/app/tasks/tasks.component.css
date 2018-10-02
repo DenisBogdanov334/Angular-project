@@ -6,8 +6,12 @@
   height: 100%;
   float: left;
 }
-table{
+.mainlist table{
   width: 100%;
+}
+
+.option tr{
+  width:6em;
   text-align: left;
 }
 .mat-row:hover {
@@ -25,6 +29,11 @@ table{
 .update, .create{
   padding-left: 3em;
 }
-button{
+.option button{
+  margin-top: 10px;
+  margin-left: 15em;
+}
+.mainlist button{
+  margin-top: 10px;
   margin-left: 15em;
 }

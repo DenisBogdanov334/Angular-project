@@ -1,27 +1,38 @@
 .employees{
-  margin-left: 13em
+  margin-left: 8em;
 }
-table {
-  padding-left: 2em;
+.mainlist{
+  width: 35%;
+  height: 100%;
+  float: left;
+}
+.mainlist table{
+  width: 100%;
 }
 
-th{
-  padding-bottom: 7px;
-}
-
-th , td{
-  width:7em;
+.option tr{
+  width:6em;
   text-align: left;
-  padding-left: 20px;
+}
+.mat-row:hover {
+  background-color: #F6F6F6	;
+}
+.selected{
+  color: white;
 }
 
-.pip {
-  margin-left: 1em;
-  margin-top: 0.7em;
+.option{
+ width:45%;
+ float: left;
 }
-.create, .update {
-  margin-left: 2em;
+.update, .create{
+  padding-left: 3em;
 }
-ol{
-  list-style-type: none;
+.option button{
+  margin-top: 10px;
+  margin-left: 15em;
+}
+.mainlist button{
+  margin-top: 10px;
+  margin-left: 15em;
 }

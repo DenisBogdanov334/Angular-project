@@ -1,111 +1,129 @@
 <div class="employees">
 
+	<div class="mainlist">
+		<!-- List of the employee -->
+		<h2>Employees</h2>
+		<table mat-table [dataSource]="employees" class="emplist">
 
-	<h2>Employees</h2>
+			<ng-container matColumnDef="EmpNumber">
+				<th mat-header-cell *matHeaderCellDef>No.</th>
+				<td mat-cell *matCellDef="let employee"
+				(click)="employeeOnClick(employee)" [class.selected]="employee === selectedEmployee">
+					{{employee.EmpNumber}}
+				</td>
+			</ng-container>
 
-	<!-- List of the employee -->
-	<table st-table="rowCollection" class="table table-stripped table-hover">
-		<thead>
-			<tr>
-				<th>EmpNumber</th>
-				<th>FirstName</th>
-				<th>LastName</th>
-			</tr>
-		</thead>
+			<ng-container matColumnDef="FirstName">
+				<th mat-header-cell *matHeaderCellDef>FirstName</th>
+				<td mat-cell *matCellDef="let employee"
+					(click)="employeeOnClick(employee)" [class.selected]="employee === selectedEmployee">
+					{{employee.FirstName}}
+				</td>
+			</ng-container>
 
-		<tbody>
-			<tr *ngFor="let employee of employees"
-			(click)="employeeOnClick(employee)"
-			[class.selected]="employee === selectedEmployee">
-				<td>{{employee.EmpNumber}}</td>
-				<td>{{employee.FirstName}}</td>
-				<td>{{employee.LastName}}</td>
+			<ng-container matColumnDef="LastName">
+				<th mat-header-cell *matHeaderCellDef>LastName</th>
+				<td mat-cell *matCellDef="let employee"
+					(click)="employeeOnClick(employee)" [class.selected]="employee === selectedEmployee">
+					{{employee.LastName}}
+				</td>
+			</ng-container>
 
-			</tr>
-		</tbody>
-	</table>
+			<tr mat-header-row *matHeaderRowDef="ColumnsForEmployees"></tr>
+			<tr mat-row *matRowDef="let row; columns: ColumnsForEmployees;"></tr>
+		</table>
 
-	<button class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
-			Create Employee
-	</button>
-
-	<!-- Edit data of selected employer -->
-	<div class="update" *ngIf="selectedEmployee">
-		<h3>{{selectedEmployee.FirstName}} Details</h3>
-			<div>
-				<label>EmpNumber : {{selectedEmployee.EmpNumber}}</label><br>
-
-				<label for="FirstName" class="material">Employee First Name : </label>
-				<mat-form-field class="material">
-    			<input matInput [(ngModel)]="selectedEmployee.FirstName">
-  			</mat-form-field>
-				<br>
-
-				<label for="LastName" class="material">  Employee Family Name : </label>
-				<mat-form-field class="material">
-    			<input matInput [(ngModel)]="selectedEmployee.LastName">
-  			</mat-form-field>
-				<br>
-			</div>
-			<!--Display Task-->
-			<label for="task">Task : </label>
-			<mat-form-field>
-			  <mat-select name="task" [(ngModel)]="selectedEmployee.Number">
-			    <mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number">
-			      {{tsk.Name}}
-			    </mat-option>
-			  </mat-select>
-			</mat-form-field>
-			<!-- Display Department -->
-			<label for="department" >  Department : </label>
-			<mat-form-field>
-			  <mat-select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
-			    <mat-option *ngFor="let dep of allDepartments" [value]=dep.DepNumber>
-			      {{dep.DepName}}
-			    </mat-option>
-			  </mat-select>
-			</mat-form-field><br>
-
-			<button class="btndelete" (click)="delete()">Delete Employee</button>
+		<button mat-stroked-button color="primary"
+				class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
+			Create Task
+		</button>
 	</div>
 
-	<!-- Create new employer -->
-	<div class="create">
-		<div *ngIf="creatingEmployee">
-			<h3>Add new employee</h3>
-				<label>EmpNumber : {{newEmpNumber}}  </label><br />
+	<div class="option">
+		<!-- Edit data of selected employer -->
+		<div class="update" *ngIf="selectedEmployee">
+			<h3>{{selectedEmployee.FirstName}} Details</h3>
+				<div>
+					<label>EmpNumber : {{selectedEmployee.EmpNumber}}</label><br>
 
-				<label for="FirstName" class="material">Employee First Name : </label>
-				<mat-form-field class="material">
-					<input matInput [(ngModel)]="FirstName" placeholder="Employee First Name">
-				</mat-form-field>
-				<br>
+					<label for="FirstName" class="material">Employee First Name : </label>
+					<mat-form-field class="material">
+	    			<input matInput [(ngModel)]="selectedEmployee.FirstName">
+	  			</mat-form-field>
+					<br>
 
-				<label for="LastName" class="material">Employee Last Name : </label>
-				<mat-form-field class="material">
-					<input matInput [(ngModel)]="LastName" placeholder="Employee Last Name">
-				</mat-form-field>
-				<br />
-
-				<label for = "DepartmentForNew">Department : </label>
+					<label for="LastName" class="material">  Employee Family Name : </label>
+					<mat-form-field class="material">
+	    			<input matInput [(ngModel)]="selectedEmployee.LastName">
+	  			</mat-form-field>
+					<br>
+				</div>
+				<!--Display Task-->
+				<label for="task">Task : </label>
 				<mat-form-field>
-					<mat-select name="task" [(ngModel)]="DepNumber">
-						<mat-option *ngFor="let dep of allDepartments" [value]="dep.DepNumber" >
-							{{dep.DepName}}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-
-				<label>Task : </label>
-				<mat-form-field>
-					<mat-select name="task" [(ngModel)]="Number" >
-						<mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number" >
-							{{tsk.Name}}
-						</mat-option>
-					</mat-select>
+				  <mat-select name="task" [(ngModel)]="selectedEmployee.Number">
+				    <mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number">
+				      {{tsk.Name}}
+				    </mat-option>
+				  </mat-select>
 				</mat-form-field><br>
-				<button class="pop" (click)="create(FirstName,LastName,DepNumber,Number)">Create</button>
+				<!-- Display Department -->
+				<label for="department" >  Department : </label>
+				<mat-form-field>
+				  <mat-select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
+				    <mat-option *ngFor="let dep of allDepartments" [value]=dep.DepNumber>
+				      {{dep.DepName}}
+				    </mat-option>
+				  </mat-select>
+				</mat-form-field><br>
+
+				<button mat-stroked-button color="primary"
+						class="btndelete" (click)="delete()">
+					Delete Employee
+				</button>
+		</div>
+
+		<!-- Create new employer -->
+		<div class="create">
+			<div *ngIf="creatingEmployee">
+				<h3>Add new employee</h3>
+					<label>EmpNumber : {{newEmpNumber}}  </label><br />
+
+					<label for="FirstName" class="material">Employee First Name : </label>
+					<mat-form-field class="material">
+						<input matInput [(ngModel)]="FirstName" placeholder="Employee First Name">
+					</mat-form-field>
+					<br>
+
+					<label for="LastName" class="material">Employee Last Name : </label>
+					<mat-form-field class="material">
+						<input matInput [(ngModel)]="LastName" placeholder="Employee Last Name">
+					</mat-form-field>
+					<br />
+
+					<label for = "DepartmentForNew">Department : </label>
+					<mat-form-field>
+						<mat-select name="task" [(ngModel)]="DepNumber">
+							<mat-option *ngFor="let dep of allDepartments" [value]="dep.DepNumber" >
+								{{dep.DepName}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<label>Task : </label>
+					<mat-form-field>
+						<mat-select name="task" [(ngModel)]="Number" >
+							<mat-option *ngFor="let tsk of allTasks" [value]="tsk.Number" >
+								{{tsk.Name}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field><br>
+					
+					<button mat-stroked-button color="primary"
+							class="pop" (click)="create(FirstName,LastName,DepNumber,Number)">
+						Create Employee
+					</button>
+			</div>
 		</div>
 	</div>
-
 </div>
