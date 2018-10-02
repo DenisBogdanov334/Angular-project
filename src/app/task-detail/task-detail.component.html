@@ -1,0 +1,36 @@
+<!-- Edit the data of selected task -->
+  <div class="update" *ngIf="selectedTask">
+    <h3>{{selectedTask.Name}} Details</h3>
+    <div>
+      <!-- slelcted task number-->
+      <label for="editTaskNumber" class="material">Task Number : {{selectedTask.Number}}</label>
+      <br>
+      <!-- selected task name -->
+      <label for="editTaskName" class="material">Task Name : </label>
+      <mat-form-field class="editTaskName">
+        <input matInput [(ngModel)]="selectedTask.Name" >
+      </mat-form-field><br>
+
+      <!--Display Department selected task delong-->
+      <label for="Deapartment" class="material">Department : </label>
+      <mat-form-field name="Department">
+        <mat-select [(ngModel)]="selectedTask.DepNumber">
+          <mat-option *ngFor="let dep of selectedTask.Departments" [value]="dep.DepNumber">
+            {{dep.DepName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
+
+      <table class="showEmployees">
+        <tr>
+          <td>Employees: </td>
+          <td *ngFor = "let emp of selectedTask.Employees">{{emp.FirstName}} {{emp.LastName}} ,</td>
+        </tr>
+      </table>
+
+      <button mat-stroked-button color="primary"
+        class="btndelete" (click)="delete()">
+        Delete Task
+      </button>
+    </div>
+  </div>

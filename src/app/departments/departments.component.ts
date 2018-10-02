@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Department } from './departments';
 import { DepartmentsService } from './departments.service'
 
@@ -6,6 +6,8 @@ import { Task } from '../tasks/tasks'
 import { TasksService } from '../tasks/tasks.service';
 import { Employee } from '../employees/employees'
 import { EmployeesService } from '../employees/employees.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'app-departments',
@@ -15,6 +17,8 @@ import { EmployeesService } from '../employees/employees.service';
 
 
 export class DepartmentsComponent implements OnInit {
+    //@Input() departmentFromDashboard: department;
+    dashboard: DashboardComponent
     departments: Department[];
     selectedDepartment: Department;
     creatingDepartment: boolean =  false;
@@ -26,13 +30,16 @@ export class DepartmentsComponent implements OnInit {
 
     constructor(private departmentService: DepartmentsService,
                 private tasksService:TasksService,
-                private employeesService: EmployeesService) {}
+                private employeesService: EmployeesService,
+                private dashboardService: DashboardService,
+              ) {}
 
 
     ngOnInit() {
       this.getDepartments();
       this.getTasks();
       this.getEmployees();
+    //  this.getSelectedDepartment();
     }
 
     departmentOnClick(department: Department): void{
@@ -72,4 +79,11 @@ export class DepartmentsComponent implements OnInit {
     getEmployees(): void{
       this.allEmployees = this.employeesService.getEmployees();
     }
+    /*
+    getSelectedDepartment(): void{
+      this.selectedDepartment = this.dashboardService.getSelectedDepartment();
+    }
+    */
+
+
 }

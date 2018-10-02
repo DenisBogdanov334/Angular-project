@@ -7,6 +7,8 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DepartmentDetailComponent } from './department-detail/department-detail.component';
+
 // Angular Module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
@@ -20,6 +22,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
+
 
 
 
@@ -29,7 +34,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TasksComponent,
     DepartmentsComponent,
     EmployeesComponent,
-    DashboardComponent
+    DashboardComponent,
+    DepartmentDetailComponent,
+    EmployeeDetailComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,

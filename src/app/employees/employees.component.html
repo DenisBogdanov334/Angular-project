@@ -41,6 +41,7 @@
 
 	<div class="option">
 		<!-- Edit data of selected employer -->
+		<!--
 		<div class="update" *ngIf="selectedEmployee">
 			<h3>{{selectedEmployee.FirstName}} Details</h3>
 				<div>
@@ -58,7 +59,7 @@
 	  			</mat-form-field>
 					<br>
 				</div>
-				<!--Display Task-->
+
 				<label for="task">Task : </label>
 				<mat-form-field>
 				  <mat-select name="task" [(ngModel)]="selectedEmployee.Number">
@@ -67,7 +68,7 @@
 				    </mat-option>
 				  </mat-select>
 				</mat-form-field><br>
-				<!-- Display Department -->
+
 				<label for="department" >  Department : </label>
 				<mat-form-field>
 				  <mat-select name="department" [(ngModel)]="selectedEmployee.DepNumber" >
@@ -82,7 +83,7 @@
 					Delete Employee
 				</button>
 		</div>
-
+	-->
 		<!-- Create new employer -->
 		<div class="create">
 			<div *ngIf="creatingEmployee">
@@ -118,12 +119,16 @@
 							</mat-option>
 						</mat-select>
 					</mat-form-field><br>
-					
+
 					<button mat-stroked-button color="primary"
 							class="pop" (click)="create(FirstName,LastName,DepNumber,Number)">
 						Create Employee
 					</button>
 			</div>
 		</div>
+
+		<app-employee-detail [selectedEmployee]="selectedEmployee"></app-employee-detail>
+
 	</div>
+
 </div>

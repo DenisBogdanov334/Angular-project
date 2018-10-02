@@ -1,4 +1,4 @@
-.employees{
+.tasks{
   margin-left: 8em;
 }
 .mainlist{
@@ -29,7 +29,7 @@
 .update, .create{
   padding-left: 3em;
 }
-.option button{
+button{
   margin-top: 10px;
   margin-left: 15em;
 }

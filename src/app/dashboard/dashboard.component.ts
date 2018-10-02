@@ -15,9 +15,15 @@ export class DashboardComponent implements OnInit {
   departments: Department[];
   employees: Employee[];
   tasks: Task[];
+
   ColumnsForDepartments: string[] = ['DepNumber', 'DepName'];
   ColumnsForEmployees: string[] = ['EmpNumber', 'FirstName', 'LastName']
   ColumnsForTasks: string[] = ['Number', 'Name']
+
+  selectedDepartment: Department;
+  selectedEmployee: Employee;
+  selectedTask:Task;
+
   constructor(private departmentsService:DepartmentsService,
               private employeesService: EmployeesService,
               private tasksService: TasksService) { }
@@ -41,4 +47,13 @@ export class DashboardComponent implements OnInit {
     this.tasks = this.tasks.slice(0,5);
   }
 
+  departmentOnClick(department: Department): void{
+    this.selectedDepartment = department;
+  }
+  employeeOnClick(employee: Employee):void{
+    this.selectedEmployee = employee;
+  }
+  taskOnClick(task: Task):void{
+    this.selectedTask = task;
+  }
 }
