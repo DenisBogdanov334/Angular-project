@@ -1,8 +1,13 @@
+<div class="pageTitle">
+  <h2>Employees</h2>
+</div>
+
+
 <div class="employees">
 
 	<div class="mainlist">
 		<!-- List of the employee -->
-		<h2>Employees</h2>
+		<h2>Employee List</h2>
 		<table mat-table [dataSource]="employees" class="emplist">
 
 			<ng-container matColumnDef="EmpNumber">
@@ -41,7 +46,7 @@
 
 	<div class="option">
 		<!-- Edit data of selected employer -->
-		
+
 		<div class="update" *ngIf="selectedEmployee">
 			<h3>{{selectedEmployee.FirstName}} Details</h3>
 				<div>

@@ -1,4 +1,19 @@
+.pageTitle{
+  width:100%;
+  height: 50px;
+  background-color: red;
+}
+.pageTitle h2{
+  height: 100%;
+  background-color: #3F51B5;
+  margin-top: 0;
+  padding-left: 4em;
+  padding-top: 15px;
+  color: white;
+}
+
 .department{
+  margin-top: 2.5em;
   margin-left: 8em
 }
 .mainlist{

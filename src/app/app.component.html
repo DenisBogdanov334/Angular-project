@@ -1,18 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="menue">
-  <a mat-raised-button color="primary" routerLink="/dashboard">
-    <mat-icon>home</mat-icon> Dashboard
+  <a mat-raised-button color="primary" routerLink="" style="font-size:32px;">
+    <mat-icon>home</mat-icon>My App
   </a>
+  <a mat-raised-button color="primary" routerLink="/dashboard">Dashboard</a>
   <a mat-raised-button color="primary" routerLink="/departments">Department</a>
   <a mat-raised-button color="primary" routerLink="/employees">Employees</a>
   <a mat-raised-button color="primary" routerLink="/tasks">Tasks</a>
 </div>
-
-<div style="text-align:center">
-  <h1 routerLink="/dashboard">{{ title }}</h1>
-</div>
-
 <router-outlet></router-outlet>
 <!--
 <div class = "app-list">
