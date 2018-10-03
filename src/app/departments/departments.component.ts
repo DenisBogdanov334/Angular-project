@@ -23,7 +23,7 @@ export class DepartmentsComponent implements OnInit {
     selectedDepartment: Department;
     creatingDepartment: boolean =  false;
     newDepNumber : number;
-
+    query:string = '';
     allEmployees: Employee[];
     allTasks: Task[];
     ColumnsForDepartments: string[] = ['DepNumber', 'DepName']

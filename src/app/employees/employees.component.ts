@@ -21,8 +21,7 @@ export class EmployeesComponent implements OnInit {
     allTasks: Task[];
     allDepartments: Department[];
     ColumnsForEmployees: string[] = ['EmpNumber', 'FirstName','LastName']
-    keyword = '';
-
+    query:string = '';
 
     constructor(private employeesService: EmployeesService,
                 private tasksService: TasksService,
@@ -84,12 +83,5 @@ export class EmployeesComponent implements OnInit {
     getSelectedEmployee(): void {
       this.selectedEmployee = this.employeesService.getSelectedEmployee();
     }
-    /*
-    onKey(event: any) {
-      this.keyword = event.target.value ;
-      for (var emp in this.employees ) {
-        console.log(emp.FirstName);
-      }
-    }
-    */
+  
 }

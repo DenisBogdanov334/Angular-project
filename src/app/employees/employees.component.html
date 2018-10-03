@@ -3,25 +3,18 @@
 </div>
 <div class ="searchForm">
   <form class="search-form">
-    <mat-form-field class="example-full-width">
-      <input name="key" matInput placeholder="Search" (keyup)="onKey($event)">
-    </mat-form-field>
-    <!--
-    <button mat-stroked-button color="primary" (click)="serchOnList()">
-      Search
-    </button>
-    -->
+    
   </form>
 </div>
 
-
+Search: <input [(ngModel)] ="query" placeholder="search employee" />
 
 <div class="employees">
 
 	<div class="mainlist">
 		<!-- List of the employee -->
 		<h2>Employee List</h2>
-		<table mat-table [dataSource]="employees" class="emplist">
+		<table mat-table [dataSource]="employees | startsWithE : query" class="emplist">
 
 			<ng-container matColumnDef="EmpNumber">
 				<th mat-header-cell *matHeaderCellDef>No.</th>
@@ -53,7 +46,7 @@
 
 		<button mat-stroked-button color="primary"
 				class="pip" [hidden]="creatingemployee" (click)="creatingEmployee = true">
-			Create Task
+			Create Employee
 		</button>
 	</div>
 

@@ -3,32 +3,30 @@
 </div>
 <div class ="searchForm">
   <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Name">
-    </mat-form-field>
-    <button mat-stroked-button color="primary">Search</button>
+    
+    
   </form>
 </div>
-
+Search: <input [(ngModel)] ="query" placeholder="search department" />
 
 <div class="department">
 
 	<div class="mainlist">
 		<!--Department List -->
 		<h2>Department List</h2>
-		<table mat-table [dataSource]="departments" class="tasklist">
+		<table mat-table [dataSource]="departments | startsWith : query" class="tasklist">
 
 			<ng-container matColumnDef="DepNumber">
 				<th mat-header-cell *matHeaderCellDef>No.</th>
-				<td mat-cell *matCellDef="let department"
-				(click)="departmentOnClick(department)" [class.selected]="department === selectedDepartment">
+				<td mat-cell *matCellDef="let department "
+				(click)="departmentOnClick(department)" [class.selected]="department === selectedDepartment" >
 					{{department.DepNumber}}
 				</td>
 			</ng-container>
 
 			<ng-container matColumnDef="DepName">
 				<th mat-header-cell *matHeaderCellDef>Department Name</th>
-				<td mat-cell *matCellDef="let department"
+				<td mat-cell *matCellDef="let department "
 				 (click)="departmentOnClick(department)" [class.selected]="department === selectedDepartment">
 					{{department.DepName}}
 				</td>

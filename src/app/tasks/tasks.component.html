@@ -3,19 +3,16 @@
 </div>
 <div class ="searchForm">
   <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Name">
-    </mat-form-field>
-    <button mat-stroked-button color="primary">Search</button>
+    
   </form>
 </div>
-
+Search: <input [(ngModel)] ="query" placeholder="search tasks" />
 
 <div class="tasks">
 	<div class="mainlist">
 		<h2>Task List</h2>
 		<!-- List of the tasks -->
-		<table mat-table [dataSource]="tasks" class="tasklist">
+		<table mat-table [dataSource]="tasks | startsWithT : query" class="tasklist">
 
 			<ng-container matColumnDef="Number">
 				<th mat-header-cell *matHeaderCellDef>No.</th>

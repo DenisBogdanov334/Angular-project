@@ -21,7 +21,7 @@ export class TasksComponent implements OnInit {
     allDepartmanet: Department[];
     tasks: Task[];
     selectedTask: Task;
-
+    query:string = '';
     newTaskNumber: number;
     creatingTask: boolean =  false;
     ColumnsForTasks: string[] = ['Number', 'Name'];

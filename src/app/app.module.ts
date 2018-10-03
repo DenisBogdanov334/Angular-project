@@ -21,6 +21,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StartsWithPipe } from './departments/starts-with.pipe';
+import { StartsWithTPipe } from './tasks/starts-with-t.pipe';
+import { StartsWithEPipe } from './employees/starts-with-e.pipe';
+
 
 
 
@@ -31,6 +35,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DepartmentsComponent,
     EmployeesComponent,
     DashboardComponent,
+    StartsWithPipe,
+    StartsWithTPipe,
+    StartsWithEPipe,
   ],
   imports: [
     BrowserModule,
