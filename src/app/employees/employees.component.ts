@@ -71,17 +71,25 @@ export class EmployeesComponent implements OnInit {
     }
 
     getEmployees(): void {
-      this.employees = this.employeesService.getEmployees();
+      this.employeesService.getEmployees()
+        .subscribe(employees => this.employees = employees);
+      //this.employees = this.employeesService.getEmployees();
       this.newEmpNumber = this.employees.length + 1;
     }
     getTasks(): void {
-      this.allTasks = this.tasksService.getTasks();
+      //this.allTasks = this.tasksService.getTasks();
+      this.tasksService.getTasks()
+        .subscribe(allTasks => this.allTasks = alltasks);
     }
     getDepartments(): void {
-      this.allDepartments = this.departmentsService.getDepartments();
+      //this.allDepartments = this.departmentsService.getDepartments();
+      this.departmentsService.getDepartments()
+        .subscribe( allDepartments => this.allDepartments = allDepartments);
     }
     getSelectedEmployee(): void {
-      this.selectedEmployee = this.employeesService.getSelectedEmployee();
+      //this.selectedEmployee = this.employeesService.getSelectedEmployee();
+      this.employeesService.getSelectedEmployee()
+        .subscribe(selectedEmployee => this.selectedEmployee = selectedEmployee);
     }
-  
+
 }

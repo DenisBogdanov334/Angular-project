@@ -35,15 +35,21 @@ export class DashboardComponent implements OnInit {
   }
 
   getDepartments(): void {
-    this.departments = this.departmentsService.getDepartments();
+    //this.departments = this.departmentsService.getDepartments();
+    this.departmentsService.getDepartments()
+      .subscribe(departments => this.departments = departments);
     this.departments = this.departments.slice(0,3)
   }
   getEmployees(): void {
-    this.employees = this.employeesService.getEmployees();
+    //this.employees = this.employeesService.getEmployees();
+    this.employeesService.getEmployees()
+      .subscribe(employees => this.employees = employees);
     this.employees = this.employees.slice(0,5)
   }
   getTasks(): void {
-    this.tasks = this.tasksService.getTasks();
+    //this.tasks = this.tasksService.getTasks();
+    this.tasksService.getTasks()
+      .subscribe(tasks => this.tasks = tasks);
     this.tasks = this.tasks.slice(0,5);
   }
 

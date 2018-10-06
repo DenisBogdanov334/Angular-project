@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+
+import { Observable, of } from 'rxjs';
+
 import { Task } from './tasks';
 import { Tasks } from './mock-tasks';
 import { Employee } from '../employees/employees';
@@ -15,15 +18,15 @@ export class TasksService {
   constructor() { }
 
 
-  getTasks(): Task[] {
-    return Tasks;
+  getTasks(): Observable<Task[]> {
+    return of(Tasks);
   }
 
   setSelectedTask(tsk: Task) {
     this.selectedTask = tsk
   }
-  getSelectedService() {
-    return this.selectedTask;
+  getSelectedTask(): Observable<Task> {
+    return of(this.selectedTask);
   }
 
 }

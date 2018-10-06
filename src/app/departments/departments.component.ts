@@ -70,17 +70,25 @@ export class DepartmentsComponent implements OnInit {
     }
 
     getDepartments(): void{
-      this.departments = this.departmentsService.getDepartments();
+      //this.departments = this.departmentsService.getDepartments();
+      this.departmentsService.getDepartments()
+        .subscribe(departments => this.departments = departments);
       this.newDepNumber = this.departments.length + 1;
     }
     getTasks(): void {
-      this.allTasks = this.tasksService.getTasks();
+      //this.allTasks = this.tasksService.getTasks();
+      this.tasksService.getTasks()
+        .subscribe(allTasks => this.allTasks = allTasks);
     }
     getEmployees(): void{
-      this.allEmployees = this.employeesService.getEmployees();
+      //this.allEmployees = this.employeesService.getEmployees();
+      this.employeesService.getEmployees()
+        .subscribe(allEmployees => this.allEmployees = allEmployees);
     }
     getSelectedDepartment(): void {
-      this.selectedDepartment = this.departmentsService.getSelectedDepartments();
+      //this.selectedDepartment = this.departmentsService.getSelectedDepartments();
+      this.departmentsService.getSelectedDepartments()
+        .subscribe(selectedDepartment => this.selectedDepartment = selectedDepartment);
     }
 
 }

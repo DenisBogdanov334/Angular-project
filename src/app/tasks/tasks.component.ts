@@ -74,19 +74,28 @@ export class TasksComponent implements OnInit {
       this.selectedTask = null;
     }
     getTasks(): void {
-      this.tasks = this.tasksService.getTasks();
+      //this.tasks = this.tasksService.getTasks();
+      this.tasksService.getTasks()
+        .subscribe(tasks => this.tasks = tasks);
+
     }
 
     getEmployees(): void {
-      this.allemployees = this.employeesSevice.getEmployees();
+      //this.allemployees = this.employeesSevice.getEmployees();
+      this.employeesSevice.getEmployees()
+        .subscribe(allemployees => this.allemployees = allemployees);
       this.newTaskNumber = this.tasks.length + 1;
     }
     getDepartments(): void {
-      this.allDepartmanet = this.departmentsService.getDepartments();
+      //this.allDepartmanet = this.departmentsService.getDepartments();
+      this.departmentsService.getDepartments()
+        .subscribe(allDepartmanet => this.allDepartmanet = allDepartmanet);
     }
-    
+
     getSelectedTask(): void {
-      this.selectedTask = this.tasksService.getSelectedService();
+      //this.selectedTask = this.tasksService.getSelectedTask();
+      this.tasksService.getSelectedTask()
+        .subscribe(selectedTask => this.selectedTask = selectedTask);
     }
 
 }
