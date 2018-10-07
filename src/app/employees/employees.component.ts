@@ -79,7 +79,7 @@ export class EmployeesComponent implements OnInit {
     getTasks(): void {
       //this.allTasks = this.tasksService.getTasks();
       this.tasksService.getTasks()
-        .subscribe(allTasks => this.allTasks = alltasks);
+        .subscribe(allTasks => this.allTasks = allTasks);
     }
     getDepartments(): void {
       //this.allDepartments = this.departmentsService.getDepartments();
