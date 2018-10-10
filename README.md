@@ -4,3 +4,4 @@
 #### Progress so far:
 ##### Weeks Assignments 1-3 & 5.1-5.3 *Denis Bogdanov*
 ##### Weeks Assignments 4 & 5.4-5.9 *Shinnosuke Hirota*
+##### Weeks Assignment 6 - Both and we could not complete it. Needs to be discussed with teacher!
