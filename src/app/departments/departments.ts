@@ -2,10 +2,15 @@ import { Employee } from '../employees/employees'
 import { Task } from '../tasks/tasks'
 
 export class Department{
-  DepNumber: number;
-  DepName: string;
-  EmpName: Employee[];
-  Name: Task[];
+  id: number;
+  name: string;
+  building: string;
+  employees: number[]
+
+  task_name: string;
+  Employees?: Employee[];
+  Tasks?: Task[];
+
 
   //Number: number;
 

@@ -1,3 +1,4 @@
+/*
 import { Department } from './departments';
 
 export const DEPARTMENTS: Department[] = [
@@ -5,3 +6,4 @@ export const DEPARTMENTS: Department[] = [
   { DepNumber: 2, DepName: 'Personnel', EmpName:[], Name:[] },
   { DepNumber: 3, DepName: 'Marketing', EmpName:[], Name:[]},
 ];
+*/

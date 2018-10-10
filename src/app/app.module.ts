@@ -8,6 +8,10 @@ import { EmployeesComponent } from './employees/employees.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+
 // Angular Module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
@@ -43,6 +47,13 @@ import { StartsWithEPipe } from './employees/starts-with-e.pipe';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
+
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    
+
     //Angular Module
     BrowserAnimationsModule,
     MatButtonModule,

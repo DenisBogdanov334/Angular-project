@@ -31,16 +31,19 @@ export class TasksComponent implements OnInit {
 
 
 
+
     constructor(private tasksService: TasksService,
                 private employeesSevice: EmployeesService,
                 private departmentsService: DepartmentsService,
-              private calendar: NgbCalendar) { }
+                private calendar: NgbCalendar ) { }
 
     ngOnInit() {
       this.getTasks();
       this.getEmployees();
       this.getDepartments();
       this.getSelectedTask();
+      //this.newTaskNumber = this.tasks.length + 1;
+      //console.log(this.tasks.length);
     }
 
     selectToday() {
@@ -49,42 +52,50 @@ export class TasksComponent implements OnInit {
 
     taskOnClick(task: Task):void{
       this.selectedTask = task;
-      this.selectedTask.Departments = this.allDepartmanet;
+      this.selectedTask.Departments = this.allDepartmanet.filter(dep => {
+        return dep.id === this.selectedTask.department_id
+      });
       this.selectedTask.Employees = this.allemployees.filter( emp => {
-        return task.Number === emp.Number;
+        return this.selectedTask.employees.includes(emp.id)
       });
     }
 
     //create(number: string,　name: string, DepNumber: number ): void{
-    create(name: string, depNumber: number ): void{
+    create(name:string, dep_id:number ): void{
     if (name.length == 0)
     return;
 
     const newTask = new Task();
-    newTask.Number = this.newTaskNumber;
-    newTask.Name = name;
-    newTask.DepNumber = depNumber;
-    this.tasks.push(newTask);
+    newTask.id = this.newTaskNumber;
+    newTask.name = String(name);
+    newTask.department_id = dep_id;
+    //console.log(newTask);
+    //this.tasks = this.tasks.push(newTask);
+    console.log(this.update(newTask));
     this.creatingTask = false;
     }
 
     delete(): void{
       const selectedTaskIndex = this.tasks.indexOf(this.selectedTask);
-      this.tasks.splice(selectedTaskIndex, 1);
+      //const selectedId = this.selectedTask.id
+      //const i = this.tasks.findIndex(t => t.id === selectedId);
+      this.tasks.filter(tsk =>{return tsk.id !== this.selectedTask.id});
       this.selectedTask = null;
     }
+
     getTasks(): void {
       //this.tasks = this.tasksService.getTasks();
       this.tasksService.getTasks()
-        .subscribe(tasks => this.tasks = tasks);
+        .subscribe(tasks => {this.tasks = tasks; this.newTaskNumber = this.tasks.length + 1});
 
+        //.subscribe(tasks => {this.tasks = tasks; console.log(this.tasks)} );
+      //this.newTaskNumber = this.tasks.length + 1;
     }
 
     getEmployees(): void {
       //this.allemployees = this.employeesSevice.getEmployees();
       this.employeesSevice.getEmployees()
         .subscribe(allemployees => this.allemployees = allemployees);
-      this.newTaskNumber = this.tasks.length + 1;
     }
     getDepartments(): void {
       //this.allDepartmanet = this.departmentsService.getDepartments();
@@ -97,5 +108,22 @@ export class TasksComponent implements OnInit {
       this.tasksService.getSelectedTask()
         .subscribe(selectedTask => this.selectedTask = selectedTask);
     }
-
+    onclick(value: string) {
+      this.query = value ;
+      //console.log(value);
+      this.tasks = this.tasks.filter( tsk => {
+      return tsk.name.toLowerCase().includes(this.query.toLowerCase())
+      });
+    }
+    update(tsk: Task) {
+      for (let task of this.tasks){
+        if (task.id == tsk.id){
+          this.tasksService.addObject(tsk)
+            .subscribe(function(data){
+              task = tsk;
+              return;
+            });
+        }
+      }
+    }
 }

@@ -3,22 +3,25 @@
 </div>
 <div class ="searchForm">
   <form class="example-form">
-    
+    <label for="name">Search:</label>
+    <input id="txtName" name="txtName" type="text" #name />
+    <input type="button" value="search" (click)="onclick(name.value)" />
   </form>
 </div>
-Search: <input [(ngModel)] ="query" placeholder="search tasks" />
+<!--Search: <input [(ngModel)] ="query" placeholder="search tasks" />-->
 
 <div class="tasks">
 	<div class="mainlist">
 		<h2>Task List</h2>
 		<!-- List of the tasks -->
-		<table mat-table [dataSource]="tasks | startsWithT : query" class="tasklist">
+<!--		<table mat-table [dataSource]="tasks | startsWithT : query" class="tasklist">  -->
+  <table mat-table [dataSource]="tasks" class="tasklist">
 
 			<ng-container matColumnDef="Number">
 				<th mat-header-cell *matHeaderCellDef>No.</th>
 				<td mat-cell *matCellDef="let task"
 					(click)="taskOnClick(task)"[class.selected]="task === selectedTask">
-					{{task.Number}}
+					{{task.id}}
 				</td>
 			</ng-container>
 
@@ -26,7 +29,7 @@ Search: <input [(ngModel)] ="query" placeholder="search tasks" />
 				<th mat-header-cell *matHeaderCellDef>Task Name</th>
 				<td mat-cell *matCellDef="let task"
 				 (click)="taskOnClick(task)"[class.selected]="task === selectedTask">
-					{{task.Name}}
+					{{task.name}}
 				</td>
 			</ng-container>
 
@@ -44,23 +47,23 @@ Search: <input [(ngModel)] ="query" placeholder="search tasks" />
 	<div class="option">
 		<!-- Edit the data of selected task -->
 		  <div class="update" *ngIf="selectedTask">
-		    <h3>{{selectedTask.Name}} Details</h3>
+		    <h3>{{selectedTask.name}} Details</h3>
 		    <div>
 		      <!-- slelcted task number-->
-		      <label for="editTaskNumber" class="material">Task Number : {{selectedTask.Number}}</label>
+		      <label for="editTaskNumber" class="material">Task Number : {{selectedTask.id}}</label>
 		      <br>
 		      <!-- selected task name -->
 		      <label for="editTaskName" class="material">Task Name : </label>
 		      <mat-form-field class="editTaskName">
-		        <input matInput [(ngModel)]="selectedTask.Name" >
+		        <input matInput [(ngModel)]="selectedTask.name" >
 		      </mat-form-field><br>
 
 		      <!--Display Department selected task delong-->
 		      <label for="Deapartment" class="material">Department : </label>
 		      <mat-form-field name="Department">
-		        <mat-select [(ngModel)]="selectedTask.DepNumber">
-		          <mat-option *ngFor="let dep of selectedTask.Departments" [value]="dep.DepNumber">
-		            {{dep.DepName}}
+		        <mat-select [(ngModel)]="selectedTask.department_id">
+		          <mat-option *ngFor="let dep of selectedTask.Departments" [value]="dep.id">
+		            {{dep.name}}
 		          </mat-option>
 		        </mat-select>
 		      </mat-form-field><br>
@@ -68,7 +71,7 @@ Search: <input [(ngModel)] ="query" placeholder="search tasks" />
 		      <table class="showEmployees">
 		        <tr>
 		          <td>Employees: </td>
-		          <td *ngFor = "let emp of selectedTask.Employees">{{emp.FirstName}} {{emp.LastName}} ,</td>
+		          <td *ngFor = "let emp of selectedTask.Employees">{{emp.first_name}} {{emp.last_name}} ,</td>
 		        </tr>
 		      </table>
 
@@ -87,22 +90,22 @@ Search: <input [(ngModel)] ="query" placeholder="search tasks" />
 				<label for="Number" class="material">Number : {{newTaskNumber}}</label><br />
 
 				<!-- Create new task name -->
-				<label for="Name" class="material">Task Name : </label>
+				<label for="name" class="material">Task Name : </label>
 				<mat-form-field class="Name">
-	    		<input matInput [(ngModel)]="Name" >
+	    		<input matInput [(ngModel)]="tasks.name" >
 	  		</mat-form-field><br>
 
 
 				<label for="DepNumber" class="material">Department : </label>
 				<mat-form-field>
-				  <mat-select [(ngModel)]="DepNumber">
-				    <mat-option *ngFor="let dep of allDepartmanet" [value]="dep.DepNumber">
-				      {{dep.DepName}}
+				  <mat-select [(ngModel)]="tasks.department_id">
+				    <mat-option *ngFor="let dep of allDepartmanet" [value]="dep.id">
+				      {{dep.name}}
 				    </mat-option>
 				  </mat-select>
 				</mat-form-field><br><br>
 
-				<button mat-stroked-button color="primary" class="pop" (click)="create(Name,DepNumber)">
+				<button mat-stroked-button color="primary" class="pop" (click)="create(tasks.name,tasks.department_id)">
 					Create
 				</button>
 			</div>

@@ -1,3 +1,4 @@
+/*
 import { Employee } from './employees';
 
 
@@ -18,3 +19,4 @@ export const Employees: Employee[] = [
 { EmpNumber: 14 ,FirstName: 'Cho', LastName: 'Chang', Number:7, DepNumber:3 },
 { EmpNumber: 15 ,FirstName: 'Sean', LastName: 'Hung', Number:7, DepNumber:3 },
 ];
+*/

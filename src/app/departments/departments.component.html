@@ -3,24 +3,25 @@
 </div>
 <div class ="searchForm">
   <form class="example-form">
-    
-    
+    <label for="name">Search:</label>
+    <input id="txtName" name="txtName" type="text" #name />
+    <input type="button" value="search" (click)="onclick(name.value)" />
   </form>
 </div>
-Search: <input [(ngModel)] ="query" placeholder="search department" />
+<!--Search: <input [(ngModel)] ="query" placeholder="search department" /> -->
 
 <div class="department">
 
 	<div class="mainlist">
 		<!--Department List -->
 		<h2>Department List</h2>
-		<table mat-table [dataSource]="departments | startsWith : query" class="tasklist">
-
+<!--		<table mat-table [dataSource]="departments | startsWith : query" class="tasklist"> -->
+    <table mat-table [dataSource]="departments" class="tasklist">
 			<ng-container matColumnDef="DepNumber">
 				<th mat-header-cell *matHeaderCellDef>No.</th>
 				<td mat-cell *matCellDef="let department "
 				(click)="departmentOnClick(department)" [class.selected]="department === selectedDepartment" >
-					{{department.DepNumber}}
+					{{department.id}}
 				</td>
 			</ng-container>
 
@@ -28,7 +29,7 @@ Search: <input [(ngModel)] ="query" placeholder="search department" />
 				<th mat-header-cell *matHeaderCellDef>Department Name</th>
 				<td mat-cell *matCellDef="let department "
 				 (click)="departmentOnClick(department)" [class.selected]="department === selectedDepartment">
-					{{department.DepName}}
+					{{department.name}}
 				</td>
 			</ng-container>
 
@@ -47,22 +48,22 @@ Search: <input [(ngModel)] ="query" placeholder="search department" />
 
 		  <!--Edit the department -->
 		  <div class="update" *ngIf="selectedDepartment">
-		    <h3>{{selectedDepartment.DepName}} Details</h3>
+		    <h3>{{selectedDepartment.name}} Details</h3>
 		    <div>
 		      <label for="editDepNumber" class="material">
-		         Department Number : {{selectedDepartment.DepNumber}}
+		         Department Number : {{selectedDepartment.id}}
 		       </label><br>
 
 		      <label for="editDepName" class="material">Department Name : </label>
 		      <mat-form-field class="editDepName">
-		        <input matInput [(ngModel)]="selectedDepartment.DepName" >
+		        <input matInput [(ngModel)]="selectedDepartment.name" >
 		      </mat-form-field>
 
 		      <!-- Employees of electedDepartment -->
 		      <table class="EmployeeForDepartment">
 		        <tr>
 		          <th>Employees: </th>
-		          <td *ngFor="let emp of selectedDepartment.EmpName">{{emp.FirstName}} {{emp.LastName}},
+		          <td *ngFor="let emp of selectedDepartment.Employees">{{emp.first_name}} {{emp.last_name}},
 		          </td>
 		        </tr>
 		      </table>
@@ -71,7 +72,7 @@ Search: <input [(ngModel)] ="query" placeholder="search department" />
 		      <table class="TaskForDepartment">
 		        <tr>
 		          <th>Tasks: </th>
-		          <td *ngFor="let tsk of selectedDepartment.Name">{{tsk.Name}}</td>
+		          <td *ngFor="let tsk of selectedDepartment.Tasks">{{tsk.name}}</td>
 		        <tr>
 		      </table>
 
@@ -90,12 +91,12 @@ Search: <input [(ngModel)] ="query" placeholder="search department" />
 
 				<label for="DepName" class="material">Department Name</label>
 				<mat-form-field class="DepName">
-    			<input matInput placeholder="Department Name" [(ngModel)]="DepName">
+    			<input matInput placeholder="Department Name" [(ngModel)]="departments.name">
   			</mat-form-field>
 				<br>
 
 				<button mat-stroked-button color="primary"
-						class="pop" (click)="create(DepName)">
+						class="pop" (click)="create(departments.name)">
 					Create
 				</button>
 			</div>

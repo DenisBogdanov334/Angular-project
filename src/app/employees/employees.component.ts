@@ -20,7 +20,7 @@ export class EmployeesComponent implements OnInit {
     newEmpNumber: number;
     allTasks: Task[];
     allDepartments: Department[];
-    ColumnsForEmployees: string[] = ['EmpNumber', 'FirstName','LastName']
+    ColumnsForEmployees: string[] = ['id', 'first_name','last_name']
     query:string = '';
 
     constructor(private employeesService: EmployeesService,
@@ -39,42 +39,48 @@ export class EmployeesComponent implements OnInit {
       this.selectedEmployee = employee;
       // pick up a task of selectedEmployee
       this.selectedEmployee.Tasks = this.allTasks.filter( tsk =>{
-          return employee.Number === tsk.Number;
-        })
-      this.selectedEmployee.Name = this.selectedEmployee.Tasks[0].Name ;
+          //return employee.taskNumber === tsk.id;
+          return tsk.employees.includes(this.selectedEmployee.id) ;
+        });
+      //console.log(this.selectedEmployee.Tasks)
+      //this.selectedEmployee.task_name = this.selectedEmployee.Tasks[0].name ;
 
       // pick up a task of the selectedEmployee
       this.selectedEmployee.Departments = this.allDepartments.filter( dep => {
-          return employee.DepNumber === dep.DepNumber;
-        })
+          return employee.department_id === dep.id;
+        });
       //this.selectedEmployee.DepName = this.selectedEmployee.Departments[0].DepName;
     }
 
-    create(firstname:string,lastname:string,depNumber:number,number:number): void{
+    create(firstname:string,lastname:string,depNumber:number): void{
     if (firstname.length == 0)
     return;
 
     const newEmployee = new Employee();
-    newEmployee.EmpNumber = this.newEmpNumber;
-    newEmployee.FirstName = firstname;
-    newEmployee.LastName = lastname;
-    newEmployee.DepNumber = depNumber;
-    newEmployee.Number = number;
-    this.employees.push(newEmployee);
+    newEmployee.id = this.newEmpNumber;
+    newEmployee.first_name = firstname;
+    newEmployee.last_name = lastname;
+    newEmployee.department_id = depNumber;
+    //newEmployee.Number = number;
+    //this.employees.push(newEmployee);
     this.creatingEmployee = false;
     }
 
     delete(): void{
       const selectedEmployeeIndex = this.employees.indexOf(this.selectedEmployee);
-      this.employees.splice(selectedEmployeeIndex, 1);
+      //this.employees.splice(selectedEmployeeIndex, 1);
+      this.employees = this.employees.filter(emp=>{
+        return emp.id !== this.selectedEmployee.id
+      });
       this.selectedEmployee = null;
     }
 
     getEmployees(): void {
       this.employeesService.getEmployees()
-        .subscribe(employees => this.employees = employees);
+        .subscribe(employees => {this.employees = employees;console.log(this.employees)});
+        //console.log(this.employees);
       //this.employees = this.employeesService.getEmployees();
-      this.newEmpNumber = this.employees.length + 1;
+      //this.newEmpNumber = this.employees.length + 1;
     }
     getTasks(): void {
       //this.allTasks = this.tasksService.getTasks();
@@ -91,5 +97,18 @@ export class EmployeesComponent implements OnInit {
       this.employeesService.getSelectedEmployee()
         .subscribe(selectedEmployee => this.selectedEmployee = selectedEmployee);
     }
+    onclick(value: string) {
+      this.query = value ;
+      console.log(value);
 
+      this.employees = this.employees.filter( emp => {
+      return emp.first_name.toLowerCase().includes(this.query.toLowerCase())||
+        emp.last_name.includes(this.query);
+      });
+      /*
+      this.employees = this.employees.filter( emp => {
+      return emp.last_name.includes(this.query)
+      });
+      */
+    }
 }

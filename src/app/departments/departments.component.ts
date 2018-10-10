@@ -44,12 +44,12 @@ export class DepartmentsComponent implements OnInit {
 
     departmentOnClick(department: Department): void{
       this.selectedDepartment = department;
-      this.selectedDepartment.EmpName = this.allEmployees.filter(emp => {
-        return this.selectedDepartment.DepNumber === emp.DepNumber;
+      this.selectedDepartment.Employees = this.allEmployees.filter(emp => {
+        return this.selectedDepartment.id === emp.department_id;
       })
 
-      this.selectedDepartment.Name = this.allTasks.filter(tsk => {
-        return this.selectedDepartment.DepNumber === tsk.DepNumber;
+      this.selectedDepartment.Tasks = this.allTasks.filter(tsk => {
+        return this.selectedDepartment.id === tsk.department_id;
       })
     }
 
@@ -57,23 +57,27 @@ export class DepartmentsComponent implements OnInit {
       if (depname.length == 0)
       return;
       const newDepartment = new Department();
-      newDepartment.DepNumber = this.newDepNumber;
-      newDepartment.DepName=depname;
-      this.departments.push(newDepartment);
+      newDepartment.id = this.newDepNumber;
+      newDepartment.name = depname;
+      //this.departments =this.departments.push(newDepartment);
       //this.creatingDepartment = false;
     }
 
     delete(): void{
       const selectedDepartmentIndex = this.departments.indexOf(this.selectedDepartment);
-      this.departments.splice(selectedDepartmentIndex, 1);
+      //this.departments.splice(selectedDepartmentIndex, 1);
+      this.departments = this.departments.filter(dep=>{
+        return dep.id !== this.selectedDepartment.id
+      });
       this.selectedDepartment = null;
     }
 
     getDepartments(): void{
       //this.departments = this.departmentsService.getDepartments();
       this.departmentsService.getDepartments()
-        .subscribe(departments => this.departments = departments);
-      this.newDepNumber = this.departments.length + 1;
+        .subscribe(departments => {this.departments = departments;
+            this.newDepNumber = this.departments.length + 1});
+      //this.newDepNumber = this.departments.length + 1;
     }
     getTasks(): void {
       //this.allTasks = this.tasksService.getTasks();
@@ -90,5 +94,11 @@ export class DepartmentsComponent implements OnInit {
       this.departmentsService.getSelectedDepartments()
         .subscribe(selectedDepartment => this.selectedDepartment = selectedDepartment);
     }
-
+    onclick(value: string) {
+      this.query = value ;
+      //console.log(value);
+      this.departments = this.departments.filter( dep => {
+      return dep.name.toLowerCase().includes(this.query.toLowerCase())
+      });
+    }
 }

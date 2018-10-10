@@ -2,13 +2,11 @@ import { Employee } from '../employees/employees';
 import { Department } from '../departments/departments';
 
 export class Task{
-   Number: number;　// should make it unique
-   Name: string;
-   DepNumber?: number;
-   //startday?: string
-   //endday?: string;
-
-
+   id?: number;　
+   department_id?: number;
+   name?: string;
+   employees?: number[];
    Employees?: Employee[];
    Departments?: Department[];
+   due_date?: string;
 }
