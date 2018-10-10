@@ -37,13 +37,5 @@ export class TasksService {
   getSelectedTask(): Observable<Task> {
     return of(this.selectedTask);
   }
-  /*
-  addTask(task: Task):Observable<Task> {
-    return this.http.post<Task>(this.tasksUrl, task, httpOptions);
-  }
-  */
-  addObject(task: Task): Observable<Task> {
-    return this.http.put<Task>(this.tasksUrl, task, httpOptions);
-  }
 
 }

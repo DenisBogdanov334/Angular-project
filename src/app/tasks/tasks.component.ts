@@ -71,7 +71,7 @@ export class TasksComponent implements OnInit {
     newTask.department_id = dep_id;
     //console.log(newTask);
     //this.tasks = this.tasks.push(newTask);
-    console.log(this.update(newTask));
+    //console.log(this.update(newTask));
     this.creatingTask = false;
     }
 
@@ -79,7 +79,7 @@ export class TasksComponent implements OnInit {
       const selectedTaskIndex = this.tasks.indexOf(this.selectedTask);
       //const selectedId = this.selectedTask.id
       //const i = this.tasks.findIndex(t => t.id === selectedId);
-      this.tasks.filter(tsk =>{return tsk.id !== this.selectedTask.id});
+      this.tasks = this.tasks.filter(tsk =>{return tsk.id !== this.selectedTask.id});
       this.selectedTask = null;
     }
 
@@ -115,15 +115,14 @@ export class TasksComponent implements OnInit {
       return tsk.name.toLowerCase().includes(this.query.toLowerCase())
       });
     }
+    /*
     update(tsk: Task) {
       for (let task of this.tasks){
         if (task.id == tsk.id){
           this.tasksService.addObject(tsk)
-            .subscribe(function(data){
-              task = tsk;
-              return;
-            });
+            .subscribe(tsk =>this.tasks.push(tsk));
         }
       }
     }
+    */
 }
